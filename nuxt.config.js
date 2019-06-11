@@ -20,6 +20,14 @@ export default {
         href:
           'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons'
       }
+    ],
+    link: [
+      { rel: 'stylesheet'},
+      {
+        rel: 'stylesheet',
+        href:
+          'https://fonts.googleapis.com/css?family=Cabin&display=swap'
+      }
     ]
   },
   /*
@@ -30,6 +38,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/style/app.styl', '~/assets/style/font.styl'
   ],
   /*
   ** Plugins to load before mounting the App
