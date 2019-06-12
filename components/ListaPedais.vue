@@ -5,7 +5,8 @@
         <v-flex xs12 sm12 md12>
           <h2 class="display-1">
             <span style="letter-spacing: 7px;">
-              pedais<span class="orange--text">Agendados</span>
+              pedais
+              <span class="orange--text">Agendados</span>
             </span>
           </h2>
         </v-flex>
@@ -13,17 +14,17 @@
     </v-container>
     <v-container style="margin-top:20px">
       <v-layout row wrap>
-      <v-flex xs12 sm6 md12>
-            <v-text-field
-              class="my-input"
-              outline
-              color="orange"
-              height="25"
-              label="Pesquisar Grupo"
-              prepend-inner-icon="search"
-            ></v-text-field>
-          </v-flex>
-        <v-flex xs12 sm6 md3 v-for="pedal in pedais" :key="pedal.nome">
+        <v-flex xs12 sm12 md12>
+          <v-text-field
+            class="my-input"
+            outline
+            color="orange"
+            height="25"
+            label="Pesquisar Grupo"
+            prepend-inner-icon="search"
+          ></v-text-field>
+        </v-flex>
+        <v-flex xs12 sm6 md3 v-for="pedal in pedais" :key="pedal.nome" style="margin-bottom: 20px">
           <v-card elevation="2" transparent class="colored-border">
             <v-layout row style="margin-top:10px">
               <v-flex xs7 style="padding-left: 10px">
@@ -112,9 +113,9 @@
 
 <style>
 .theme--light.v-sheet {
-    background-color: #fff;
-    border-color: #fc8600;
-    color: rgba(0,0,0,0.87);
+  background-color: #fff;
+  border-color: #fc8600;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .colored-border {
@@ -131,11 +132,9 @@
 }
 
 .v-text-field--outline > .v-input__control > .v-input__slot {
-    background: transparent !important;
-    border-radius: 40px;
+  background: transparent !important;
+  border-radius: 40px;
 }
-
-
 </style>
 
 <script>

@@ -1,6 +1,32 @@
 <template>
-  <v-toolbar class="white" flat app="true">
-    <img src="../assets/img/logo2.png" alt="logo2" height="56px">
+  <v-toolbar fixed app color="yellow lighten-5">
+    <v-layout align-center justify-center>
+      <v-flex xs6>
+        <v-flex xs12>
+          <v-layout align-center justify-center>
+            <img src="../assets/img/logo2.png" alt="logo2" height="50px">
+          </v-layout>
+        </v-flex>
+      </v-flex>
+
+      <v-flex xs6>
+        <v-flex xs12>
+          <v-layout align-center justify-center>
+            <v-btn icon style="padding-top: 10px">
+              <v-badge color="amber accent-4">
+                <template v-slot:badge>
+                  <span>3</span>
+                </template>
+                <v-icon large color="grey" medium>directions_bike</v-icon>
+              </v-badge>
+            </v-btn>
+            <v-btn icon>
+              <v-icon>more_vert</v-icon>
+            </v-btn>
+          </v-layout>
+        </v-flex>
+      </v-flex>
+    </v-layout>
   </v-toolbar>
 </template>
 
