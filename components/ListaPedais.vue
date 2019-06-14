@@ -1,5 +1,7 @@
 <template>
+
   <v-layout column wrap class="my-5" align-center>
+
     <v-container style="padding-bottom:0; padding-top:0" grid-list-xl text-xs-center>
       <v-layout align-center justify-center row fill-height wrap>
         <v-flex xs12 sm12 md12>
@@ -12,7 +14,9 @@
         </v-flex>
       </v-layout>
     </v-container>
+    
     <v-container style="margin-top:20px">
+
       <v-layout row wrap>
         <v-flex xs12 sm12 md12>
           <v-text-field
@@ -24,7 +28,10 @@
             prepend-inner-icon="search"
           ></v-text-field>
         </v-flex>
+
+        <!--Lista de Pedais-->
         <v-flex xs12 sm6 md3 v-for="pedal in pedais" :key="pedal.nome" style="margin-bottom: 20px">
+          <!--Card de Pedal-->
           <v-card elevation="2" transparent class="colored-border">
             <v-layout row style="margin-top:10px">
               <v-flex xs7 style="padding-left: 10px">
@@ -100,7 +107,7 @@
                 </v-list-tile>
               </ul>
               <v-btn round class="amber accent-4 mt-5 layout justify-center" dark href="#">
-                Saber Mais
+                Saber Mais&nbsp;&nbsp;&nbsp;
                 <v-icon>directions_bike</v-icon>
               </v-btn>
             </v-card-text>
@@ -111,79 +118,83 @@
   </v-layout>
 </template>
 
-<style>
-.theme--light.v-sheet {
-  background-color: #fff;
-  border-color: #fc8600;
-  color: rgba(0, 0, 0, 0.87);
-}
-
-.colored-border {
-  border-color: #fc8600;
-  border-style: solid;
-  border-width: 1px 1px 1px 1px;
-  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-  margin: 0px 05px 0px 05px;
-  border-radius: 20px;
-}
-
-.lista-pequena {
-  height: 35px;
-}
-
-.v-text-field--outline > .v-input__control > .v-input__slot {
-  background: transparent !important;
-  border-radius: 40px;
-}
-</style>
 
 <script>
-export default {
-  data() {
-    return {
-      pedais: [
-        {
-          nome: "Pedal Alto da XV",
-          logo: require("@/assets/img/alto.jpg"),
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto"
-        },
-        {
-          nome: "Pedal Alto da XV",
-          logo: require("@/assets/img/norte.jpg"),
-          nivel: "avançado",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto"
-        },
-        {
-          nome: "Pedal Alto da XV",
-          logo: require("@/assets/img/acc.jpg"),
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto"
-        },
-        {
-          nome: "Pedal Alto da XV",
-          logo: require("@/assets/img/bikecheri.jpg"),
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto"
-        }
-      ]
-    };
-  }
-};
+  export default {
+    data() {
+      return {
+        pedais: [
+          {
+            nome: "Pedal Alto da XV",
+            logo:
+              "http://bikeunit.com.br/wp-content/uploads/2019/06/12039543_910551375696359_7434603031156574201_n-150x150.jpg",
+            nivel: "Medio",
+            distancia: "70Km",
+            terreno: "Misto",
+            dia: "10/05",
+            hora: "14:30",
+            encontro: "Largo Isaak Lazarotto"
+          },
+          {
+            nome: "Pedal Alto da XV",
+            logo:
+              "http://bikeunit.com.br/wp-content/uploads/2019/06/20375801_472083346507028_3001683953445299279_n-150x150.jpg",
+            nivel: "avançado",
+            distancia: "70Km",
+            terreno: "Misto",
+            dia: "10/05",
+            hora: "14:30",
+            encontro: "Largo Isaak Lazarotto"
+          },
+          {
+            nome: "Pedal Alto da XV",
+            logo:
+              "http://bikeunit.com.br/wp-content/uploads/2019/06/21432777_1487481278028893_8987553334530296972_n-150x150.jpg",
+            nivel: "Medio",
+            distancia: "70Km",
+            terreno: "Misto",
+            dia: "10/05",
+            hora: "14:30",
+            encontro: "Largo Isaak Lazarotto"
+          },
+          {
+            nome: "Pedal Alto da XV",
+            logo:
+              "http://bikeunit.com.br/wp-content/uploads/2019/06/240-150x150.jpg",
+            nivel: "Medio",
+            distancia: "70Km",
+            terreno: "Misto",
+            dia: "10/05",
+            hora: "14:30",
+            encontro: "Largo Isaak Lazarotto"
+          }
+        ]
+      };
+    }
+  };
 </script>
+<style>
+  .theme--light.v-sheet {
+    background-color: #fff;
+    border-color: #fc8600;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  .colored-border {
+    border-color: #fc8600;
+    border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    margin: 0px 05px 0px 05px;
+    border-radius: 20px;
+  }
+
+  .lista-pequena {
+    height: 35px;
+  }
+
+  .v-text-field--outline > .v-input__control > .v-input__slot {
+    background: transparent !important;
+    border-radius: 40px;
+  }
+</style>
