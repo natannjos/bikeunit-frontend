@@ -2,18 +2,13 @@
 
   <v-layout column wrap class="my-5" align-center>
 
-    <v-container style="padding-bottom:0; padding-top:0" grid-list-xl text-xs-center>
-      <v-layout align-center justify-center row fill-height wrap>
-        <v-flex xs12 sm12 md12>
-          <h2 class="display-1">
-            <span style="letter-spacing: 7px;">
-              pedais
-              <span class="orange--text">Agendados</span>
-            </span>
-          </h2>
+      <v-flex xs12>
+            <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
+              <span class="super-bold">
+                pedais<span class="orange--text">Agendados</span>
+              </span>
+            </h2>
         </v-flex>
-      </v-layout>
-    </v-container>
     
     <v-container style="margin-top:20px">
 
@@ -173,28 +168,8 @@
     }
   };
 </script>
-<style>
-  .theme--light.v-sheet {
-    background-color: #fff;
-    border-color: #fc8600;
-    color: rgba(0, 0, 0, 0.87);
-  }
-
-  .colored-border {
-    border-color: #fc8600;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-    margin: 0px 05px 0px 05px;
-    border-radius: 20px;
-  }
-
+<style scope>
   .lista-pequena {
     height: 35px;
-  }
-
-  .v-text-field--outline > .v-input__control > .v-input__slot {
-    background: transparent !important;
-    border-radius: 40px;
   }
 </style>

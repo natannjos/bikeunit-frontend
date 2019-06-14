@@ -6,7 +6,7 @@
         <span class="letra-espacada">Seja Bem Vindo!</span>
       </h1>
       <v-flex xs12 md4 xs2>
-        <v-btn round class="yellow darken-4 lighten-2 mt-5" dark href="#">
+        <v-btn round class="yellow darken-4 lighten-2 mt-5" dark href="/criar-grupo">
           Criar Grupo de Ciclismo&nbsp;&nbsp;&nbsp;
           <v-icon>directions_bike</v-icon>
         </v-btn>

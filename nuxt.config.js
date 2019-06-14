@@ -31,6 +31,13 @@ export default {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Cabin&display=swap"
       }
+    ],
+    link: [
+      { rel: "stylesheet" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Raleway&display=swap"
+      }
     ]
   },
   /*
@@ -40,7 +47,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ["~/assets/style/app.styl", "~/assets/style/font.styl"],
+  css: [
+    "~/assets/style/app.styl",
+    "~/assets/style/font.styl",
+    "~/static/css/my-style.css"
+  ],
   /*
    ** Plugins to load before mounting the App
    */
