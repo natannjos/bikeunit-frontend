@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar fixed app color="yellow lighten-5" style="z-index:10003">
+  <v-toolbar fixed app color="yellow lighten-5">
     <v-layout align-center justify-center>
       <v-flex xs6>
         <v-flex xs12>

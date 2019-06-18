@@ -1,17 +1,15 @@
 <template>
-
   <v-layout column wrap class="my-5" align-center>
+    <v-flex xs12>
+      <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
+        <span class="super-bold">
+          pedais
+          <span class="orange--text">Agendados</span>
+        </span>
+      </h2>
+    </v-flex>
 
-      <v-flex xs12>
-            <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
-              <span class="super-bold">
-                pedais<span class="orange--text">Agendados</span>
-              </span>
-            </h2>
-        </v-flex>
-    
     <v-container style="margin-top:20px">
-
       <v-layout row wrap>
         <v-flex xs12 sm12 md12>
           <v-text-field
@@ -27,86 +25,7 @@
         <!--Lista de Pedais-->
         <v-flex xs12 sm6 md3 v-for="pedal in pedais" :key="pedal.nome" style="margin-bottom: 20px">
           <!--Card de Pedal-->
-          <v-card elevation="2" transparent class="colored-border">
-            <v-layout row style="margin-top:10px">
-              <v-flex xs7 style="padding-left: 10px">
-                <v-card
-                  tile
-                  style="border-radius:50%; border-style:solid; border-width:1px; border-color: #ffab00"
-                  flat
-                >
-                  <v-img :src="pedal.logo" aspect-ratio="1" class="grey lighten-2"></v-img>
-                </v-card>
-              </v-flex>
-              <v-flex xs3 style="margin-left:10%">
-                <v-card tile style="border-radius:50%" flat>
-                  <v-img :src="require('@/assets/img/logo.png')" aspect-ratio="1" class="lighten-2"></v-img>
-                </v-card>
-              </v-flex>
-            </v-layout>
-            <v-card-title primary-title class="layout justify-center">
-              <div class="text-md-center">
-                <div class="text-xs-center dark-grey--text title">{{ pedal.nome }}</div>
-              </div>
-            </v-card-title>
-            <v-card-text>
-              <div class="title text-xs-center dark-grey--text font-weight-bold">Sábado</div>
-              <ul>
-                <v-list-tile class="lista-pequena">
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                      <strong>Nível:</strong>
-                      {{ pedal.nivel }}
-                    </v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile class="lista-pequena">
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                      <strong>Distância:</strong>
-                      {{ pedal.distancia }}
-                    </v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile class="lista-pequena">
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                      <strong>Terreno:</strong>
-                      {{ pedal.terreno }}
-                    </v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile class="lista-pequena">
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                      <strong>Dia:</strong>
-                      {{ pedal.dia }}
-                    </v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile class="lista-pequena">
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                      <strong>Hora:</strong>
-                      {{ pedal.hora }}
-                    </v-list-tile-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile class="lista-pequena">
-                  <v-list-tile-content>
-                    <v-list-tile-title>
-                      <strong>Encontro:</strong>
-                    </v-list-tile-title>
-                    <v-list-tile-sub-title class="black--text">{{ pedal.encontro }}</v-list-tile-sub-title>
-                  </v-list-tile-content>
-                </v-list-tile>
-              </ul>
-              <v-btn round class="amber accent-4 mt-5 layout justify-center" dark href="#">
-                Saber Mais&nbsp;&nbsp;&nbsp;
-                <v-icon>directions_bike</v-icon>
-              </v-btn>
-            </v-card-text>
-          </v-card>
+          <card-pedal :pedal="pedal"></card-pedal>
         </v-flex>
       </v-layout>
     </v-container>
@@ -115,61 +34,75 @@
 
 
 <script>
-  export default {
-    data() {
-      return {
-        pedais: [
-          {
-            nome: "Pedal Alto da XV",
-            logo:
-              "http://bikeunit.com.br/wp-content/uploads/2019/06/12039543_910551375696359_7434603031156574201_n-150x150.jpg",
-            nivel: "Medio",
-            distancia: "70Km",
-            terreno: "Misto",
-            dia: "10/05",
-            hora: "14:30",
-            encontro: "Largo Isaak Lazarotto"
-          },
-          {
-            nome: "Pedal Alto da XV",
-            logo:
-              "http://bikeunit.com.br/wp-content/uploads/2019/06/20375801_472083346507028_3001683953445299279_n-150x150.jpg",
-            nivel: "avançado",
-            distancia: "70Km",
-            terreno: "Misto",
-            dia: "10/05",
-            hora: "14:30",
-            encontro: "Largo Isaak Lazarotto"
-          },
-          {
-            nome: "Pedal Alto da XV",
-            logo:
-              "http://bikeunit.com.br/wp-content/uploads/2019/06/21432777_1487481278028893_8987553334530296972_n-150x150.jpg",
-            nivel: "Medio",
-            distancia: "70Km",
-            terreno: "Misto",
-            dia: "10/05",
-            hora: "14:30",
-            encontro: "Largo Isaak Lazarotto"
-          },
-          {
-            nome: "Pedal Alto da XV",
-            logo:
-              "http://bikeunit.com.br/wp-content/uploads/2019/06/240-150x150.jpg",
-            nivel: "Medio",
-            distancia: "70Km",
-            terreno: "Misto",
-            dia: "10/05",
-            hora: "14:30",
-            encontro: "Largo Isaak Lazarotto"
-          }
-        ]
-      };
-    }
-  };
+import CardPedal from "./CardPedal";
+export default {
+  components: {
+    CardPedal
+  },
+  data() {
+    return {
+      pedais: [
+        {
+          nome: "Pedal Alto da XV",
+          logo:
+            "http://bikeunit.com.br/wp-content/uploads/2019/06/12039543_910551375696359_7434603031156574201_n-150x150.jpg",
+          nivel: "Medio",
+          distancia: "70Km",
+          terreno: "Misto",
+          dia: "10/05",
+          hora: "14:30",
+          encontro: "Largo Isaak Lazarotto",
+          destino: "Quiriri",
+          preco: "70,00",
+          info:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Clique no botão de edição para alterar esse texto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+        },
+        {
+          nome: "Pedal Alto da XV",
+          logo:
+            "http://bikeunit.com.br/wp-content/uploads/2019/06/20375801_472083346507028_3001683953445299279_n-150x150.jpg",
+          nivel: "avançado",
+          distancia: "70Km",
+          terreno: "Misto",
+          dia: "10/05",
+          hora: "14:30",
+          encontro: "Largo Isaak Lazarotto",
+          destino: "Quiriri",
+          preco: ""
+        },
+        {
+          nome: "Pedal Alto da XV",
+          logo:
+            "http://bikeunit.com.br/wp-content/uploads/2019/06/21432777_1487481278028893_8987553334530296972_n-150x150.jpg",
+          nivel: "Medio",
+          distancia: "70Km",
+          terreno: "Misto",
+          dia: "10/05",
+          hora: "14:30",
+          encontro: "Largo Isaak Lazarotto",
+          destino: "Quiriri",
+          preco: ""
+        },
+        {
+          nome: "Pedal Alto da XV",
+          logo:
+            "http://bikeunit.com.br/wp-content/uploads/2019/06/240-150x150.jpg",
+          nivel: "Medio",
+          distancia: "70Km",
+          terreno: "Misto",
+          dia: "10/05",
+          hora: "14:30",
+          encontro: "Largo Isaak Lazarotto",
+          destino: "Quiriri",
+          preco: ""
+        }
+      ]
+    };
+  }
+};
 </script>
 <style scope>
-  .lista-pequena {
-    height: 35px;
-  }
+.lista-pequena {
+  height: 35px;
+}
 </style>
