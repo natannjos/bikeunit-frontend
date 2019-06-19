@@ -30,7 +30,7 @@
             <v-layout align-center justify-center row fill-heigh style="padding-right:15px">
               <v-card tile style="border-radius:50%" flat>
                 <v-img
-                  :src="require('@/assets/img/logo.png')"
+                  :src="require('@/static/images/logo.png')"
                   aspect-ratio="1"
                   class="lighten-2"
                   width="70"

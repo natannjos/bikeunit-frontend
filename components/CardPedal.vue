@@ -12,7 +12,7 @@
       </v-flex>
       <v-flex xs3 style="margin-left:10%">
         <v-card tile style="border-radius:50%" flat>
-          <v-img :src="require('@/assets/img/logo.png')" aspect-ratio="1" class="lighten-2"></v-img>
+          <v-img :src="require('@/static/images/logo.png')" aspect-ratio="1" class="lighten-2"></v-img>
         </v-card>
       </v-flex>
     </v-layout>

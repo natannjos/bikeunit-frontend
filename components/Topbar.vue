@@ -5,7 +5,7 @@
         <v-flex xs12>
           <v-layout align-center justify-center>
             <a href="/">
-              <img src="../assets/img/logo2.png" alt="logo2" height="50px">
+              <img src="../static/images/logo2.png" alt="logo2" height="50px">
             </a>
           </v-layout>
         </v-flex>
