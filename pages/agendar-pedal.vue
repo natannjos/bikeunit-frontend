@@ -166,7 +166,7 @@
                   label="Informações Adicionais"
                   v-model="info"
                   color="orange"
-                  height="260"
+                  height="250"
                 ></v-textarea>
               </v-flex>
             </v-layout>
