@@ -150,7 +150,8 @@ export default {
       email: "",
       password: "",
       password2: "",
-      show: false
+      show: false,
+      image: ""
     };
   },
   validations: {

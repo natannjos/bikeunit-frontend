@@ -1,42 +1,42 @@
 .theme--light.v-sheet {
-    background-color: #fff;
-    border-color: #fc8600;
-    color: rgba(0, 0, 0, 0.87);
-  }
-  .colored-border {
-    border-color: #fc8600;
-    border-style: solid;
-    border-width: 1px 1px 1px 1px;
-    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
-    margin: 0px 5px 0px 5px;
-    border-radius: 20px;
-  }
-  
-  .v-text-field--outline > .v-input__control > .v-input__slot {
-    background: transparent !important;
-    border-radius: 50px;
-  }
-  .display-2 {
-      font-weight: 400;
-      line-height: 40px !important;
-      letter-spacing: normal !important;
-      font-family: 'Raleway', sans-serif !important;
-  }
-  .display-1 {
-    font-size: 38px !important;
-    font-weight: 400;
-    line-height: 40px !important;
-    letter-spacing: normal !important;
-    font-family: 'Raleway', sans-serif !important;
+  background-color: #fff;
+  border-color: #fc8600;
+  color: rgba(0, 0, 0, 0.87);
 }
-  .super-bold{
-    font-weight: bolder
-  }
+.colored-border {
+  border-color: #fc8600;
+  border-style: solid;
+  border-width: 1px 1px 1px 1px;
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+  margin: 0px 5px 0px 5px;
+  border-radius: 20px;
+}
 
-  .orange--text {
-    color: #fc8600 !important;
-    caret-color: #fc8600 !important;
-  }
-  .orange {
-    color: #fc8600
-  }
+.v-text-field--outline > .v-input__control > .v-input__slot {
+  background: transparent !important;
+  border-radius: 30px;
+}
+.display-2 {
+  font-weight: 400;
+  line-height: 40px !important;
+  letter-spacing: normal !important;
+  font-family: "Raleway", sans-serif !important;
+}
+.display-1 {
+  font-size: 38px !important;
+  font-weight: 400;
+  line-height: 40px !important;
+  letter-spacing: normal !important;
+  font-family: "Raleway", sans-serif !important;
+}
+.super-bold {
+  font-weight: bolder;
+}
+
+.orange--text {
+  color: #fc8600 !important;
+  caret-color: #fc8600 !important;
+}
+.orange {
+  color: #fc8600;
+}
