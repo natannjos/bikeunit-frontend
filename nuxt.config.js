@@ -20,22 +20,20 @@ export default {
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
-        rel: "stylesheet",
+        rel: "prefetch",
         href:
           "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
       }
     ],
     link: [
-      { rel: "stylesheet" },
       {
-        rel: "stylesheet",
+        rel: "prefetch",
         href: "https://fonts.googleapis.com/css?family=Cabin&display=swap"
       }
     ],
     link: [
-      { rel: "stylesheet" },
       {
-        rel: "stylesheet",
+        rel: "prefetch",
         href: "https://fonts.googleapis.com/css?family=Raleway&display=swap"
       }
     ]
@@ -65,6 +63,7 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/pwa"
   ],
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options

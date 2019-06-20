@@ -276,8 +276,8 @@ export default {
       return `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
     },
     allowedDates(val) {
-      let minDate = new Date(val)
-      minDate.setDate(minDate.getDate() + 1)
+      let minDate = new Date(val);
+      minDate.setDate(minDate.getDate() + 1);
       return minDate >= new Date();
     }
   }
