@@ -22,7 +22,7 @@
                   required
                   color="orange"
                   height="10px"
-                  label="Destino*"
+                  label="Nome ou Destino*"
                   @input="$v.destino.$touch()"
                   @blur="$v.destino.$touch()"
                   :error-messages="destinoErrors"
@@ -112,6 +112,7 @@
                   <v-date-picker
                     v-model="date"
                     scrollable
+                    locale="pt-br"
                     color="amber lighten-1"
                     header-color="amber lighten-1"
                     :allowed-dates="allowedDates"

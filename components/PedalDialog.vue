@@ -126,7 +126,7 @@
                 </v-btn>
                 <v-btn round class="amber accent-3 mt-4" dark @click.stop="dialog = false">
                   Voltar&nbsp;&nbsp;&nbsp;
-                  <v-icon>cancel</v-icon>
+                  <v-icon>reply</v-icon>
                 </v-btn>
               </v-layout>
             </v-card-text>

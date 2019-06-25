@@ -20,20 +20,20 @@ export default {
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
       {
-        rel: "prefetch",
+        rel: "stylesheet",
         href:
           "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
       }
     ],
     link: [
       {
-        rel: "prefetch",
+        rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Cabin&display=swap"
       }
     ],
     link: [
       {
-        rel: "prefetch",
+        rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Raleway&display=swap"
       }
     ]

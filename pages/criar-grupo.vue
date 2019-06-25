@@ -7,13 +7,52 @@
             <v-card-text>
               <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
                 <span style="letter-spacing: 1px;" class="super-bold">
-                  criar<span class="orange--text">Grupo</span>
+                  criar
+                  <span class="orange--text">Grupo</span>
                 </span>
               </h2>
             </v-card-text>
           </v-flex>
           <v-flex xs12 md6 lg6>
             <v-layout row wrap style="padding:10px">
+              <v-flex xs12 sm3>
+                <h3>Sua Foto</h3>
+                <v-layout justify-center align-center column>
+                  <no-ssr placeholder="Carregando...">
+                    <picture-input
+                      ref="pictureInput2"
+                      accept="image/jpeg, image/png"
+                      :custom-strings="{
+                  upload: '<h1>Bummer!</h1>',
+                  }"
+                      crop="false"
+                      toggleAspectRatio="true"
+                      @change="onChange"
+                      zIndex="0"
+                      v-model="userImage"
+                      width="100"
+                      height="100"
+                      radius="50"
+                      margin="0"
+                    ></picture-input>
+                  </no-ssr>
+                </v-layout>
+              </v-flex>
+              <v-flex xs12 sm9 style="margin-top:60px">
+                <v-text-field
+                  v-model="admin"
+                  class="my-input"
+                  outline
+                  @input="$v.admin.$touch()"
+                  @blur="$v.admin.$touch()"
+                  :error-messages="adminErrors"
+                  color="orange"
+                  height="10px"
+                  label="Seu Nome*"
+                  prepend-inner-icon="account_circle"
+                  placeholder="Obrigatório"
+                ></v-text-field>
+              </v-flex>
               <v-flex xs12 md12>
                 <v-text-field
                   v-model="nomeGrupo"
@@ -30,21 +69,7 @@
                   placeholder="Nome do Grupo (Obrigatório)"
                 ></v-text-field>
               </v-flex>
-              <v-flex 12 xs12>
-                <v-text-field
-                  v-model="admin"
-                  class="my-input"
-                  outline
-                  @input="$v.admin.$touch()"
-                  @blur="$v.admin.$touch()"
-                  :error-messages="adminErrors"
-                  color="orange"
-                  height="10px"
-                  label="Seu Nome*"
-                  prepend-inner-icon="account_circle"
-                  placeholder="Obrigatório"
-                ></v-text-field>
-              </v-flex>
+
               <v-flex xs12>
                 <v-text-field
                   class="my-input"
@@ -101,7 +126,10 @@
             </v-layout>
           </v-flex>
           <v-flex xs12 md6 lg6>
-            <v-layout align-center justify-center fill-height>
+            <v-layout align-center justify-center column>
+              <v-flex>
+                <h3>Foto do Grupo</h3>
+              </v-flex>
               <no-ssr placeholder="Carregando...">
                 <picture-input
                   ref="pictureInput"
@@ -110,14 +138,16 @@
                   button-class="btn"
                   :custom-strings="{
                   upload: '<h1>Bummer!</h1>',
-                }"
+                  }"
                   crop="false"
-                  removable
                   toggleAspectRatio="true"
                   @change="onChange"
                   removeButtonClass="red darken-1"
                   radius="50"
                   zIndex="0"
+                  height="450"
+                  width="450"
+                  v-model="image"
                 ></picture-input>
               </no-ssr>
             </v-layout>
@@ -151,7 +181,8 @@ export default {
       password: "",
       password2: "",
       show: false,
-      image: ""
+      image: "",
+      userImage: ""
     };
   },
   validations: {
@@ -228,6 +259,7 @@ export default {
     password2Errors() {
       const errors = [];
       if (!this.$v.password2.$dirty) return errors;
+      !this.$v.password2.required && errors.push("Campo Obrigatório.");
       !this.$v.password2.sameAsPassword &&
         errors.push("As senhas devem ser iguais.");
       return errors;
