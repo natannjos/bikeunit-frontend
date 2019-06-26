@@ -7,7 +7,18 @@
           style="border-radius:50%; border-style:solid; border-width:1px; border-color: #ffab00"
           flat
         >
-          <v-img :src="pedal.logo" aspect-ratio="1" class="grey lighten-2"></v-img>
+          <v-img
+            :src="pedal.logo"
+            lazy-src="https://picsum.photos/id/1077/200?blur=4"
+            aspect-ratio="1"
+            class="grey lighten-2"
+          >
+            <template v-slot:placeholder>
+              <v-layout fill-height align-center justify-center ma-0>
+                <v-progress-circular indeterminate color="orange lighten-5"></v-progress-circular>
+              </v-layout>
+            </template>
+          </v-img>
         </v-card>
       </v-flex>
       <v-flex xs3 style="margin-left:10%">
