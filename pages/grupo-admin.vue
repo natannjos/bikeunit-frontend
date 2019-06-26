@@ -125,8 +125,8 @@
                         </v-list-tile-content>
                       </v-list-tile>
                     </v-list>
-                    <v-layout row justify-space-around>
-                      <v-btn round class="orange mt-4" dark style="margin-bottom:20px">
+                    <v-layout row justify-center>
+                      <v-btn round class="orange" dark style="margin-bottom:20px">
                         Download&nbsp;&nbsp;&nbsp;
                         <v-icon>arrow_downward</v-icon>
                       </v-btn>
@@ -144,102 +144,20 @@
 
 <script>
 export default {
-  data() {
-    return {
-      pedais: [
-        {
-          id: 1,
-          grupo: "Pedal Alto da XV",
-          nome: "Quiriri",
-          logo:
-            "http://bikeunit.com.br/wp-content/uploads/2019/06/12039543_910551375696359_7434603031156574201_n-150x150.jpg",
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto",
-          destino: "Quiriri",
-          preco: "70,00",
-          info:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Clique no botão de edição para alterar esse texto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-          participantes: [
-            {
-              nome: "Thaiana do Nascimento Sousa",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg"
-            },
-            {
-              nome: "Jhenifer Lacerdas da Silva",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg"
-            },
-            {
-              nome: "Natan José Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg"
-            },
-            {
-              nome: "Aline Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg"
-            },
-            {
-              nome: "Aline Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg"
-            },
-            {
-              nome: "Aline Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg"
-            }
-          ]
-        },
-        {
-          id: 2,
-          grupo: "Pedal Alto da XV",
-          nome: "Quiriri",
-          logo:
-            "http://bikeunit.com.br/wp-content/uploads/2019/06/12039543_910551375696359_7434603031156574201_n-150x150.jpg",
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto",
-          destino: "Quiriri",
-          preco: "70,00",
-          info:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Clique no botão de edição para alterar esse texto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-          participantes: [
-            {
-              nome: "Thaiana do Nascimento Sousa",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/1.jpg"
-            },
-            {
-              nome: "Jhenifer Lacerdas da Silva",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/2.jpg"
-            },
-            {
-              nome: "Natan José Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/3.jpg"
-            },
-            {
-              nome: "Aline Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg"
-            },
-            {
-              nome: "Aline Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg"
-            },
-            {
-              nome: "Aline Oliveira dos Santos",
-              avatar: "https://cdn.vuetifyjs.com/images/lists/4.jpg"
-            }
-          ]
-        }
-      ]
-    };
-  },
-
   computed: {
     dividerClass() {
       return this.$vuetify.breakpoint.mdAndUp ? "space-v" : "space-h";
+    },
+
+    pedais() {
+      let pedaisAgendados = this.$store.state.pedais.all;
+      let grupos = this.$store.state.grupos.all;
+      pedaisAgendados.forEach(pedal => {
+        let grupo = grupos.find(x => x.id == pedal.grupoId);
+        pedal.grupo = grupo.nome;
+        pedal.logo = grupo.logo;
+      });
+      return pedaisAgendados;
     }
   }
 };

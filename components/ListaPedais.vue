@@ -3,7 +3,8 @@
     <v-flex xs12>
       <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
         <span class="super-bold">
-          pedais<span class="orange--text">Agendados</span>
+          pedais
+          <span class="orange--text">Agendados</span>
         </span>
       </h2>
     </v-flex>
@@ -37,65 +38,19 @@ export default {
   components: {
     CardPedal
   },
-  data() {
-    return {
-      pedais: [
-        {
-          nome: "Pedal Alto da XV",
-          logo:
-            "http://bikeunit.com.br/wp-content/uploads/2019/06/12039543_910551375696359_7434603031156574201_n-150x150.jpg",
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto",
-          destino: "Quiriri",
-          preco: "70,00",
-          info:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Clique no botão de edição para alterar esse texto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
-        },
-        {
-          nome: "Pedal Alto da XV",
-          logo:
-            "http://bikeunit.com.br/wp-content/uploads/2019/06/20375801_472083346507028_3001683953445299279_n-150x150.jpg",
-          nivel: "avançado",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto",
-          destino: "Quiriri",
-          preco: ""
-        },
-        {
-          nome: "Pedal Alto da XV",
-          logo:
-            "http://bikeunit.com.br/wp-content/uploads/2019/06/21432777_1487481278028893_8987553334530296972_n-150x150.jpg",
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto",
-          destino: "Quiriri",
-          preco: ""
-        },
-        {
-          nome: "Pedal Alto da XV",
-          logo:
-            "http://bikeunit.com.br/wp-content/uploads/2019/06/240-150x150.jpg",
-          nivel: "Medio",
-          distancia: "70Km",
-          terreno: "Misto",
-          dia: "10/05",
-          hora: "14:30",
-          encontro: "Largo Isaak Lazarotto",
-          destino: "Quiriri",
-          preco: ""
-        }
-      ]
-    };
+
+  computed: {
+    pedais() {
+      let pedaisAgendados = this.$store.state.pedais.all;
+      let grupos = this.$store.state.grupos.all;
+      pedaisAgendados.forEach(pedal => {
+        let grupo = grupos.find(x => x.id == pedal.grupoId);
+        pedal.grupo = grupo.nome;
+        pedal.logo = grupo.logo;
+      });
+
+      return pedaisAgendados;
+    }
   }
 };
 </script>

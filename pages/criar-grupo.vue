@@ -147,7 +147,7 @@
                   zIndex="0"
                   height="450"
                   width="450"
-                  v-model="image"
+                  v-model="logo"
                 ></picture-input>
               </no-ssr>
             </v-layout>
@@ -181,7 +181,7 @@ export default {
       password: "",
       password2: "",
       show: false,
-      image: "",
+      logo: "",
       userImage: ""
     };
   },
@@ -208,11 +208,11 @@ export default {
     }
   },
   methods: {
-    onChange(image) {
+    onChange(logo) {
       console.log("New picture selected!");
-      if (image) {
+      if (logo) {
         console.log("Picture loaded.");
-        this.image = image;
+        this.logo = logo;
       } else {
         console.log("FileReader API not supported: use the <form>, Luke!");
       }
