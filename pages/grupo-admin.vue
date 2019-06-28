@@ -2,8 +2,7 @@
   <v-container grid-list-md text-xs-center>
     <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
       <span style="letter-spacing: 1px;" class="super-bold">
-        admin
-        <span class="orange--text">Grupo</span>
+        admin<span class="orange--text">Grupo</span>
       </span>
     </h2>
     <div v-for="pedal in pedais" :key="pedal.nome" style="margin-top:20px">

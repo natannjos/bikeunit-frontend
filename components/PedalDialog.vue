@@ -1,5 +1,5 @@
 <template>
-  <v-layout row justify-center>
+  <v-layout row justify-center >
     <v-btn round class="amber accent-4 mt-5" dark @click.stop="dialog = true">
       Saber Mais&nbsp;&nbsp;&nbsp;
       <v-icon>directions_bike</v-icon>
@@ -153,5 +153,6 @@ export default {
   font-family: "Roboto", Sans-serif;
   font-weight: 600;
 }
+
 </style>
 

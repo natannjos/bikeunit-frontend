@@ -46,8 +46,8 @@ export const state = () => ({
       terreno: "Misto",
       dia: "10/05",
       hora: "14:30",
-      encontro: "Largo Isaak Lazarotto",
-      destino: "Quiriri",
+      encontro: "Rua do Pedal Norte",
+      destino: "Piraquara",
       preco: "",
       participantes: []
     },
@@ -58,8 +58,8 @@ export const state = () => ({
       terreno: "Misto",
       dia: "10/05",
       hora: "14:30",
-      encontro: "Largo Isaak Lazarotto",
-      destino: "Quiriri",
+      encontro: "Rua do ACC",
+      destino: "Paranagua",
       preco: "",
       participantes: []
     },
@@ -70,8 +70,8 @@ export const state = () => ({
       terreno: "Misto",
       dia: "10/05",
       hora: "14:30",
-      encontro: "Largo Isaak Lazarotto",
-      destino: "Quiriri",
+      encontro: "Rua do Bikecheri",
+      destino: "Josita",
       preco: "",
       participantes: []
     }

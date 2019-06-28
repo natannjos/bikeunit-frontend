@@ -658,7 +658,7 @@ export default {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 10001;
+  z-index: 100;
   box-sizing: border-box;
   background-color: rgba(200, 200, 200, 0.25);
 }

@@ -29,7 +29,7 @@
     </v-layout>
     <v-card-title primary-title class="layout justify-center">
       <div class="text-md-center">
-        <div class="text-xs-center dark-grey--text title">{{ pedal.nome }}</div>
+        <div class="text-xs-center dark-grey--text title">{{ pedal.grupo }}</div>
       </div>
     </v-card-title>
     <v-card-text>
@@ -84,10 +84,7 @@
             <v-list-tile-title>
               <strong>Encontro:</strong>
             </v-list-tile-title>
-            <v-list-tile-sub-title class="black--text">
-              {{ pedal.encontro }}
-              {{ pedal.encontro }}
-            </v-list-tile-sub-title>
+            <v-list-tile-sub-title class="black--text">{{ pedal.encontro }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
       </ul>
