@@ -61,6 +61,7 @@ export default {
     "@nuxtjs/vuetify",
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
+    "@nuxtjs/auth",
     "@nuxtjs/pwa"
   ],
 
@@ -69,6 +70,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  auth: {},
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
