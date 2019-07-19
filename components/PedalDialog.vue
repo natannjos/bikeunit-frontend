@@ -1,5 +1,5 @@
 <template>
-  <v-layout row justify-center >
+  <v-layout row justify-center>
     <v-btn round class="amber accent-4 mt-5" dark @click.stop="dialog = true">
       Saber Mais&nbsp;&nbsp;&nbsp;
       <v-icon>directions_bike</v-icon>
@@ -103,7 +103,7 @@
             </v-layout>
           </v-list-tile>
         </v-list>
-        <hr style="margin: 0 20% 0 20%">
+        <hr style="margin: 0 20% 0 20%" />
         <v-card-text v-show="pedal.info">
           <v-flex xs12>
             <v-layout align-center justify-space-around>
@@ -153,6 +153,5 @@ export default {
   font-family: "Roboto", Sans-serif;
   font-weight: 600;
 }
-
 </style>
 

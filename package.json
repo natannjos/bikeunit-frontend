@@ -14,11 +14,13 @@
     "@nuxtjs/auth": "^4.8.1",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
+    "@nuxtjs/toast": "^3.2.1",
     "@nuxtjs/vuetify": "0.5.5",
     "buffer": "^5.2.1",
     "nuxt": "^2.0.0",
     "v-currency-field": "^1.0.6",
-    "vuelidate": "^0.7.4"
+    "vuelidate": "^0.7.4",
+    "vuetify-loader": "^1.2.2"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",

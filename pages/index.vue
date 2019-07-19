@@ -14,6 +14,7 @@
 import Hero from "~/components/Hero.vue";
 import ListaPedais from "~/components/ListaPedais.vue";
 export default {
+  auth: false,
   components: {
     Hero,
     ListaPedais
