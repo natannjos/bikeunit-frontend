@@ -59,21 +59,93 @@ export default {
    */
   modules: [
     "@nuxtjs/vuetify",
+    "@nuxtjs/auth",
     // Doc: https://axios.nuxtjs.org/usage
     "@nuxtjs/axios",
-    "@nuxtjs/auth",
-    "@nuxtjs/pwa",
-    "@nuxt/toast"
+    "@nuxtjs/pwa"
   ],
 
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
-  auth: {},
+  axios: {
+    credentials: false,
+    // redirectError: '/auth/login',
+    redirectError: {
+      401: "/auth/login",
+      403: "/auth/login"
+    },
+    requestInterceptor: (config, { store }) => {
+      if (store.state.auth.token) {
+        config.headers.common.authorization = `Token ${store.state.auth.token}`;
+      }
+      return config;
+    },
+    responseInterceptor: (response, ctx) => {
+      // global.console.log(ctx);
+      return response;
+    }
+  },
+
+  auth: {
+    // Options
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url: "http://localhost:8000/api/v1/auth/login/",
+            method: "post",
+            propertyName: "key"
+          },
+          logout: "http://localhost:8000/api/v1/auth/logout/",
+          user: {
+            url: "http://localhost:8000/api/v1/auth/user/",
+            method: "get",
+            propertyName: false
+          }
+        }
+      }
+    },
+    redirect: {
+      login: "/auth/login/",
+      logout: "/auth/logout/",
+      home: "/"
+    },
+    watchLoggedIn: true,
+    //rewriteRedirects: false,
+    resetOnError: true,
+    tokenType: "Token"
+  },
   router: {
-    middleware: "auth"
+    // base: '/',
+    mode: "history",
+    linkActiveClass: "nuxt-link-active",
+    linkExactActiveClass: "nuxt-link-exact-active",
+
+    // Run the middleware/user-agent.js on every pages
+    middleware: ["user-agent"] //, "auth"]
+    //extendRoutes(routes, resolve) {
+    //  routes.push({
+    //    name: "custom",
+    //    path: "*",
+    //    component: resolve(__dirname, "pages/wizard.vue")
+    //  });
+    //}
+  },
+  pageTransition: {
+    name: "page",
+    mode: "out-in"
+  },
+  // transition (to, from) {
+  //   if (!from) return 'slide-left'
+  //   return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+  // }
+  env: {
+    API_URL: process.env.API_URL || "http://localhost:8000/api/v1",
+    API_URL_BROWSER:
+      process.env.API_URL_BROWSER || "http://localhost:8000/api/v1",
+    WS_URL: process.env.WS_URL || "localhost:8000"
   },
   /*
    ** vuetify module configuration

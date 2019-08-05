@@ -143,6 +143,7 @@
 
 <script>
 export default {
+  middleware: "auth",
   computed: {
     dividerClass() {
       return this.$vuetify.breakpoint.mdAndUp ? "space-v" : "space-h";

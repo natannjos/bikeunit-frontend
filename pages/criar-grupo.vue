@@ -7,7 +7,8 @@
             <v-card-text>
               <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
                 <span style="letter-spacing: 1px;" class="super-bold">
-                  criar<span class="orange--text">Grupo</span>
+                  criar
+                  <span class="orange--text">Grupo</span>
                 </span>
               </h2>
             </v-card-text>
@@ -143,7 +144,7 @@
                   @change="onChange"
                   removeButtonClass="red darken-1"
                   radius="50"
-                  :zIndex="0" 
+                  :zIndex="0"
                   height="450"
                   width="450"
                   v-model="logo"
@@ -169,6 +170,7 @@ import PictureInput from "~/components/PictureInput.vue";
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
+  middleware: "auth",
   components: {
     PictureInput
   },

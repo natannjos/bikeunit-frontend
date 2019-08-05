@@ -7,7 +7,8 @@
             <v-card-text>
               <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
                 <span style="letter-spacing: 1px;" class="super-bold">
-                  agendar<span class="orange--text">Pedal</span>
+                  agendar
+                  <span class="orange--text">Pedal</span>
                 </span>
               </h2>
             </v-card-text>
@@ -187,6 +188,7 @@
 <script>
 import { required, minLength, decimal } from "vuelidate/lib/validators";
 export default {
+  middleware: "auth",
   data() {
     return {
       destino: "",
