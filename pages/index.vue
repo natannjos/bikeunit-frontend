@@ -3,7 +3,6 @@
     <section>
       <hero></hero>
     </section>
-
     <section>
       <lista-pedais></lista-pedais>
     </section>

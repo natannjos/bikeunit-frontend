@@ -82,8 +82,6 @@ export default {
   data: () => ({
     username: "",
     email: "",
-    firstName: "",
-    lastName: "",
     password1: "",
     password2: "",
     pw1: true,

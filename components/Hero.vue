@@ -5,8 +5,15 @@
       <h1 class="white--text mb-2 display-1 text-xs-center" style="margin-top: 20px">
         <span class="letra-espacada">Seja Bem Vindo!</span>
       </h1>
-      <v-flex xs12 md4 xs2>
-        <nuxt-link :to="{ name: 'criar-grupo' }">
+      <v-flex xs12 md4 xs2 class="text-xs-center">
+        <nuxt-link :to="{ name: 'auth-registration' }" class="no-decoration" v-show="!loggedIn">
+          <v-btn round class="yellow darken-4 lighten-2 mt-5" dark>
+            Cadastre-se&nbsp;&nbsp;&nbsp;
+            <v-icon>person_add</v-icon>
+          </v-btn>
+        </nuxt-link>
+
+        <nuxt-link :to="{ name: 'criar-grupo' }" class="no-decoration">
           <v-btn round class="yellow darken-4 lighten-2 mt-5" dark>
             Criar Grupo de Ciclismo&nbsp;&nbsp;&nbsp;
             <v-icon>directions_bike</v-icon>
@@ -18,7 +25,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    loggedIn() {
+      return this.$auth.loggedIn;
+    }
+  }
+};
 </script>
 
 <style>
@@ -27,5 +40,9 @@ export default {};
 }
 .letra-espacada {
   letter-spacing: 10px;
+}
+.no-decoration {
+  color: #ffffff;
+  text-decoration: none;
 }
 </style>
