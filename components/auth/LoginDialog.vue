@@ -43,7 +43,6 @@
 <script>
 import LoginForm from "~/components/auth/LoginForm.vue";
 export default {
-  auth: false,
   components: { LoginForm },
   data() {
     return {

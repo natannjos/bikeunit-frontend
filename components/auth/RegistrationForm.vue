@@ -13,18 +13,45 @@
       <v-layout style="padding:10px">
         <v-card-text>
           <form @keyup.enter="submit">
-            <v-text-field
-              class="my-input"
-              outline
-              color="orange"
-              v-model="username"
-              label="Nome de usuário"
-              name="username"
-              required
-              hint="Apenas letras, números e símbolos @ /. / + / - / _."
-              max="150"
-              :counter="150"
-            />
+            <v-layout row align-center wrap>
+              <v-flex xs12 md3>
+                <h3>Sua Foto</h3>
+                <v-layout justify-center align-center column>
+                  <no-ssr placeholder="Carregando...">
+                    <picture-input
+                      ref="pictureInput2"
+                      accept="image/jpeg, image/png"
+                      :custom-strings="{
+                  upload: '<h1>Bummer!</h1>',
+                  }"
+                      :crop="false"
+                      :toggleAspectRatio="true"
+                      @change="onChange"
+                      :zIndex="0"
+                      v-model="userImage"
+                      width="100"
+                      height="100"
+                      radius="50"
+                      margin="0"
+                    ></picture-input>
+                  </no-ssr>
+                </v-layout>
+              </v-flex>
+              <v-flex xs12 md9 class="mt-5">
+                <v-text-field
+                  class="my-input"
+                  outline
+                  color="orange"
+                  v-model="username"
+                  label="Nome de usuário"
+                  name="username"
+                  required
+                  hint="Apenas letras, números e símbolos @ /. / + / - / _."
+                  max="150"
+                  :counter="150"
+                />
+              </v-flex>
+            </v-layout>
             <v-text-field
               v-model="email"
               label="Email"
@@ -77,7 +104,11 @@
 <script>
 import getProperty from "~/utils/getProperty"; // eslint-disable-line
 import { checkExist } from "~/api/auth"; // eslint-disable-line
+import PictureInput from "../PictureInput";
 export default {
+  components: {
+    PictureInput
+  },
   props: ["redirect"],
   data: () => ({
     username: "",
