@@ -18,8 +18,8 @@
           <v-spacer></v-spacer>
         </v-toolbar>
         <v-list two-line>
-          <template v-for="(item, index) in pedais">
-            <v-list-tile :key="item.grupo" avatar @click>
+          <template v-for="item in pedais">
+            <v-list-tile :key="item.grupo" avatar @click="showDialog">
               <v-list-tile-avatar>
                 <img :src="item.logo" />
               </v-list-tile-avatar>
@@ -38,6 +38,9 @@
 
 <script>
 export default {
+  methods: {
+    showDialog() {}
+  },
   computed: {
     pedais() {
       let pedaisAgendados = this.$store.state.pedais.all;

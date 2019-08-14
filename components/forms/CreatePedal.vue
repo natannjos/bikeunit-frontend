@@ -21,35 +21,43 @@
           <v-flex xs12 d-flex>
             <v-flex xs12>
               <v-select
+                v-model="nivelEscolhido"
                 :items="niveis"
                 label="Nível"
                 color="orange"
                 outline
-                v-model="nivelEscolhido"
                 prepend-inner-icon="trending_up"
+                @input="$v.nivelEscolhido.$touch()"
+                @blur="$v.nivelEscolhido.$touch()"
+                :error-messages="nivelErrors"
               ></v-select>
             </v-flex>
           </v-flex>
           <v-flex xs12>
             <v-select
+              v-model="terrenoEscolhido"
               :items="terrenos"
               label="Terreno"
               color="orange"
               outline
-              v-model="terrenoEscolhido"
+              required
               prepend-inner-icon="terrain"
+              @input="$v.terrenoEscolhido.$touch()"
+              @blur="$v.terrenoEscolhido.$touch()"
+              :error-messages="terrenoErrors"
             ></v-select>
           </v-flex>
           <v-layout row wrap>
             <v-flex xs12 md6>
               <v-currency-field
+                v-model="distancia"
                 label="Distância"
                 outline
                 color="orange"
                 height="10px"
                 v-bind="distancy_config"
+                required
                 :error-messages="distanciaErrors"
-                v-model="distancia"
                 prepend-inner-icon="navigation"
                 @input="$v.distancia.$touch()"
                 @blur="$v.distancia.$touch()"
@@ -67,7 +75,7 @@
                 @input="$v.encontro.$touch()"
                 @blur="$v.encontro.$touch()"
                 :error-messages="encontroErrors"
-                prepend-inner-icon="gps_fixed"
+                prepend-inner-icon="place"
               ></v-text-field>
             </v-flex>
           </v-layout>
@@ -139,9 +147,13 @@
                 v-if="modal2"
                 v-model="hora"
                 full-width
+                required
                 format="24hr"
                 color="amber lighten-1"
                 header-color="amber lighten-1"
+                @input="$v.hora.$touch()"
+                @blur="$v.hora.$touch()"
+                :error-messages="horaErrors"
               >
                 <v-spacer></v-spacer>
                 <v-btn flat color="orange" @click="modal2 = false">Cancel</v-btn>
@@ -162,7 +174,11 @@
         </v-layout>
       </v-flex>
       <v-flex xs12>
-        <v-btn large round class="orange" dark ripple @click="submit">
+        <v-btn large round class="orange" dark ripple @click="submit" v-if="!disableButton">
+          <b>Salvar</b>
+          <v-icon right dark>check</v-icon>
+        </v-btn>
+        <v-btn v-else large disabled round>
           <b>Salvar</b>
           <v-icon right dark>check</v-icon>
         </v-btn>
@@ -178,9 +194,9 @@ export default {
     return {
       destino: "",
       niveis: ["Iniciante", "Médio", "Avançado"],
-      nivelEscolhido: ["Iniciante", "Médio", "Avançado"],
+      nivelEscolhido: "",
       terrenos: ["Terra", "Asfalto", "Misto"],
-      terrenoEscolhido: ["Terra", "Asfalto", "Misto"],
+      terrenoEscolhido: "",
       encontro: "",
       distancia: "",
       distancy_config: {
@@ -190,7 +206,7 @@ export default {
         suffix: "Km",
         precision: 2,
         masked: false,
-        allowBlank: true,
+        allowBlank: false,
         min: Number.MIN_VALUE,
         max: Number.MAX_SAFE_INTEGER
       },
@@ -212,9 +228,35 @@ export default {
     distancia: {
       required,
       decimal
+    },
+    nivelEscolhido: {
+      required
+    },
+    terrenoEscolhido: {
+      required
+    },
+    hora: {
+      required
     }
   },
   computed: {
+    disableButton() {
+      return (
+        this.destinoErrors.length > 0 ||
+        this.encontroErrors.length > 0 ||
+        this.nivelErrors.length > 0 ||
+        this.terrenoErrors.length > 0 ||
+        this.distanciaErrors.length > 0 ||
+        this.horaErrors.length > 0 ||
+        !this.destino ||
+        !this.nivelEscolhido ||
+        !this.terrenoEscolhido ||
+        !this.encontro ||
+        !this.distancia > 0.0 ||
+        !this.date ||
+        !this.hora
+      );
+    },
     destinoErrors() {
       const errors = [];
       if (!this.$v.destino.$dirty) return errors;
@@ -227,6 +269,19 @@ export default {
       !this.$v.encontro.required && errors.push("Campo Obrigatório.");
       return errors;
     },
+
+    nivelErrors() {
+      const errors = [];
+      if (!this.$v.nivelEscolhido.$dirty) return errors;
+      !this.$v.nivelEscolhido.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
+    terrenoErrors() {
+      const errors = [];
+      if (!this.$v.terrenoEscolhido.$dirty) return errors;
+      !this.$v.terrenoEscolhido.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
     distanciaErrors() {
       const errors = [];
       if (!this.$v.distancia.$dirty) return errors;
@@ -235,6 +290,13 @@ export default {
       this.distancia < 0 && errors.push("Distância deve ser positiva.");
       return errors;
     },
+    horaErrors() {
+      const errors = [];
+      if (!this.$v.hora.$dirty) return errors;
+      !this.$v.hora.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
+
     computedDateFormatted() {
       return this.formatDate(this.date);
     }

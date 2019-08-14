@@ -46,7 +46,7 @@
         <b>Login</b>
         <v-icon right dark>check</v-icon>
       </v-btn>
-      <v-btn v-else depressed large disabled round>Login</v-btn>
+      <v-btn v-else large disabled round>Login</v-btn>
     </v-flex>
   </div>
 </template>
@@ -63,7 +63,6 @@ import {
 export default {
   props: ["redirect"],
   data: () => ({
-    type: "email",
     email: "",
     password: "",
     errors: [],
@@ -88,7 +87,7 @@ export default {
   methods: {
     async submit() {
       const fields = {
-        [this.type]: this.email,
+        email: this.email,
         password: this.password
       };
       await this.$auth

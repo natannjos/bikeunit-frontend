@@ -41,58 +41,77 @@
                 <v-text-field
                   class="my-input"
                   outline
+                  v-model.trim="username"
+                  :error-messages="usernameErrors"
                   color="orange"
-                  v-model="username"
+                  height="10px"
                   label="Nome de usuário"
-                  name="username"
-                  required
+                  prepend-inner-icon="alternate_username"
+                  placeholder="Obrigatório"
                   hint="Apenas letras, números e símbolos @ /. / + / - / _."
-                  max="150"
-                  :counter="150"
-                />
+                  :counter="15"
+                  :max="15"
+                  @input="$v.username.$touch()"
+                  @blur="$v.username.$touch()"
+                ></v-text-field>
               </v-flex>
             </v-layout>
             <v-text-field
-              v-model="email"
-              label="Email"
-              name="email"
-              type="email"
-              required
               class="my-input"
               outline
+              v-model.trim="email"
+              :error-messages="emailErrors"
               color="orange"
-            />
+              height="10px"
+              label="Seu Email*"
+              prepend-inner-icon="alternate_email"
+              placeholder="Obrigatório"
+              @input="$v.email.$touch()"
+              @blur="$v.email.$touch()"
+            ></v-text-field>
             <v-text-field
+              v-model="password"
               class="my-input"
               outline
-              color="orange"
-              v-model="password1"
-              name="password1"
+              name="password"
               label="Senha"
-              hint="Sua senha não pode consistir apenas em números."
-              :counter="password1.length"
-              min="8"
-              max="128"
-              :append-icon="pw1 ? 'visibility_off' : 'visibility'"
-              @click:append="() => (pw1 = !pw1)"
-              :type="pw1 ? 'password' : 'text'"
-              required
-            />
+              counter
+              color="orange"
+              :error-messages="passwordErrors"
+              :type="show ? 'text' : 'password'"
+              @input="$v.password.$touch()"
+              @blur="$v.password.$touch()"
+              prepend-inner-icon="lock"
+              :append-icon="show ? 'visibility' : 'visibility_off'"
+              @click:append="show = !show"
+            ></v-text-field>
             <v-text-field
+              v-model="password2"
               class="my-input"
               outline
-              color="orange"
-              v-model="password2"
               name="password2"
-              label="Confirmação de Senha"
-              hint="Redigite sua senha"
-              :append-icon="pw2 ? 'visibility_off' : 'visibility'"
-              @click:append="() => (pw2 = !pw2)"
-              :type="pw2 ? 'password' : 'text'"
-              required
-            />
+              label="Senha"
+              counter
+              color="orange"
+              :error-messages="password2Errors"
+              :type="show ? 'text' : 'password'"
+              @input="$v.password2.$touch()"
+              @blur="$v.password2.$touch()"
+              prepend-inner-icon="lock"
+              :append-icon="show ? 'visibility' : 'visibility_off'"
+              @click:append="show = !show"
+            ></v-text-field>
             <v-flex xs12>
-              <v-btn large round class="orange" dark ripple @click.native="submit">Cadastre-se</v-btn>
+              <v-btn
+                large
+                round
+                class="orange"
+                dark
+                ripple
+                @click.native="submit"
+                v-if="!disableButton"
+              >Cadastre-se</v-btn>
+              <v-btn v-else large disabled round>Cadastre-se</v-btn>
             </v-flex>
           </form>
         </v-card-text>
@@ -105,6 +124,13 @@
 import getProperty from "~/utils/getProperty"; // eslint-disable-line
 import { checkExist } from "~/api/auth"; // eslint-disable-line
 import PictureInput from "../PictureInput";
+import {
+  required,
+  minLength,
+  maxLength,
+  email,
+  sameAs
+} from "vuelidate/lib/validators";
 export default {
   components: {
     PictureInput
@@ -113,20 +139,37 @@ export default {
   data: () => ({
     username: "",
     email: "",
-    password1: "",
+    password: "",
     password2: "",
-    pw1: true,
-    pw2: true
+    errors: [],
+    show: false,
+    userImage: ""
   }),
-  methods: {
-    resetData() {
-      Object.assign(this.$data, this.$options.data());
+  validations: {
+    username: {
+      required,
+      minLength: minLength(3),
+      maxLength: maxLength(15)
     },
+    password: {
+      required,
+      minLength: minLength(3)
+    },
+    password2: {
+      required,
+      sameAsPassword: sameAs("password")
+    },
+    email: {
+      required,
+      email
+    }
+  },
+  methods: {
     async submit() {
-      const { username, email, password1, password2 } = this.$data;
+      const { username, email, password, password2 } = this.$data;
       try {
         await this.$store.dispatch("auth/registration", {
-          fields: { username, email, password1, password2 }
+          fields: { username, email, password, password2 }
         });
         this.$emit("success", email);
         this.resetData();
@@ -135,26 +178,62 @@ export default {
         if (backendErrors) this.showBackendErrors(backendErrors);
       }
     },
-    showBackendErrors(obj) {
-      this.errors.clear();
-      Object.keys(obj).forEach(field => {
-        obj[field].forEach(msg => {
-          if (field === "non_field_errors") {
-            field = "password2";
-          }
-          this.errors.add(field, msg);
-        });
-      });
+    onChange(logo) {
+      console.log("New picture selected!");
+      if (logo) {
+        console.log("Picture loaded.");
+        this.logo = logo;
+      } else {
+        console.log("FileReader API not supported: use the <form>, Luke!");
+      }
     }
   },
-  created() {
-    // this.$validator.extend("unique", {
-    //   validate: async (input, field) => {
-    //     const { data } = await this.$axios(checkExist({ [field]: input }));
-    //     return data.valid || { data };
-    //   },
-    //   getMessage: (field, params, { message }) => message
-    // });
+  computed: {
+    disableButton() {
+      return (
+        this.usernameErrors.length > 0 ||
+        this.emailErrors.length > 0 ||
+        this.passwordErrors.length > 0 ||
+        this.password2Errors.length > 0 ||
+        !this.email ||
+        !this.password ||
+        !this.password2
+      );
+    },
+    usernameErrors() {
+      const errors = [];
+      if (!this.$v.username.$dirty) return errors;
+      !this.$v.username.minLength &&
+        errors.push("Campo deve ter no mínimo 3 caracteres");
+      !this.$v.username.maxLength &&
+        errors.push("Campo deve ter no máximo 15 caracteres");
+      !this.$v.username.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
+    emailErrors() {
+      const errors = [];
+      if (!this.$v.email.$dirty) return errors;
+      !this.$v.email.email && errors.push("Email Inválido");
+      !this.$v.email.required && errors.push("Campo Obrigatório");
+      return errors;
+    },
+    passwordErrors() {
+      const errors = [];
+      if (!this.$v.password.$dirty) return errors;
+      !this.$v.password.minLength &&
+        errors.push("Campo deve ter no mínimo 3 caracteres");
+      !this.$v.password.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
+
+    password2Errors() {
+      const errors = [];
+      if (!this.$v.password2.$dirty) return errors;
+      !this.$v.password2.required && errors.push("Campo Obrigatório.");
+      !this.$v.password2.sameAsPassword &&
+        errors.push("As senhas devem ser iguais.");
+      return errors;
+    }
   }
 };
 </script>

@@ -94,7 +94,11 @@
         </v-flex>
       </v-layout>
       <v-flex xs12>
-        <v-btn large round class="orange" dark ripple @click="submit">
+        <v-btn large round class="orange" dark ripple @click="submit" v-if="!disableButton">
+          <b>Salvar</b>
+          <v-icon right dark>check</v-icon>
+        </v-btn>
+        <v-btn large round disabled v-else>
           <b>Salvar</b>
           <v-icon right dark>check</v-icon>
         </v-btn>
@@ -153,6 +157,16 @@ export default {
     }
   },
   computed: {
+    disableButton() {
+      return (
+        this.nomeGrupoErrors.length > 0 ||
+        this.estadoGrupoErrors.length > 0 ||
+        this.cidadeGrupoErrors.length > 0 ||
+        !this.nomeGrupo ||
+        !this.estadoGrupo ||
+        !this.cidadeGrupo
+      );
+    },
     nomeGrupoErrors() {
       const errors = [];
       if (!this.$v.nomeGrupo.$dirty) return errors;

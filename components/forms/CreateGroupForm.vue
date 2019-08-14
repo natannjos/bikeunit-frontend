@@ -44,12 +44,12 @@
           </v-flex>
           <v-flex xs12 sm9 style="margin-top:60px">
             <v-text-field
-              v-model="admin"
+              v-model="username"
               class="my-input"
               outline
-              @input="$v.admin.$touch()"
-              @blur="$v.admin.$touch()"
-              :error-messages="adminErrors"
+              @input="$v.username.$touch()"
+              @blur="$v.username.$touch()"
+              :error-messages="usernameErrors"
               color="orange"
               height="10px"
               label="Seu Nome*"
@@ -185,7 +185,11 @@
       </v-flex>
 
       <v-flex xs12>
-        <v-btn large round class="orange" dark ripple @click="submit">
+        <v-btn large round class="orange" dark ripple @click="submit" v-if="!disableButton">
+          <b>Salvar</b>
+          <v-icon right dark>check</v-icon>
+        </v-btn>
+        <v-btn large round disabled v-else>
           <b>Salvar</b>
           <v-icon right dark>check</v-icon>
         </v-btn>
@@ -211,16 +215,16 @@ export default {
   data() {
     return {
       nomeGrupo: "",
-      admin: "",
+      username: "",
       email: "",
       password: "",
       password2: "",
-      show: false,
-      logo: "",
       userImage: "",
       estadoGrupo: "",
       cidadeGrupo: "",
-      estados: []
+      estados: [],
+      logo: "",
+      show: false
     };
   },
   validations: {
@@ -228,7 +232,7 @@ export default {
       required,
       minLength: minLength(3)
     },
-    admin: {
+    username: {
       required,
       minLength: minLength(3)
     },
@@ -272,6 +276,26 @@ export default {
     }
   },
   computed: {
+    disableButton() {
+      return (
+        this.emailErrors.length > 0 ||
+        this.passwordErrors.length > 0 ||
+        this.nomeGrupoErrors.length > 0 ||
+        this.usernameErrors.length > 0 ||
+        this.emailErrors.length > 0 ||
+        this.passwordErrors.length > 0 ||
+        this.password2Errors.length > 0 ||
+        this.estadoGrupoErrors.length > 0 ||
+        this.cidadeGrupoErrors.length > 0 ||
+        !this.nomeGrupo ||
+        !this.username ||
+        !this.email ||
+        !this.password ||
+        !this.password2 ||
+        !this.estadoGrupo ||
+        !this.cidadeGrupo
+      );
+    },
     nomeGrupoErrors() {
       const errors = [];
       if (!this.$v.nomeGrupo.$dirty) return errors;
@@ -280,12 +304,12 @@ export default {
       !this.$v.nomeGrupo.required && errors.push("Campo Obrigatório.");
       return errors;
     },
-    adminErrors() {
+    usernameErrors() {
       const errors = [];
-      if (!this.$v.admin.$dirty) return errors;
-      !this.$v.admin.minLength &&
+      if (!this.$v.username.$dirty) return errors;
+      !this.$v.username.minLength &&
         errors.push("Campo deve ter no mínimo 3 caracteres");
-      !this.$v.admin.required && errors.push("Campo Obrigatório.");
+      !this.$v.username.required && errors.push("Campo Obrigatório.");
       return errors;
     },
     emailErrors() {
