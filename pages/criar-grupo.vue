@@ -8,7 +8,6 @@
 <script>
 import CreateGroupForm from "~/components/CreateGroupForm";
 export default {
-  middleware: "auth",
   components: { CreateGroupForm }
 };
 </script>

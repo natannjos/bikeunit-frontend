@@ -1,6 +1,6 @@
 <template>
   <v-toolbar fixed app color="yellow lighten-5" style="z-index:20">
-    <v-layout align-center justify-center>
+    <v-layout align-center justify-space-around>
       <v-flex xs6>
         <v-flex xs12>
           <v-layout align-center justify-center>
@@ -11,12 +11,12 @@
         </v-flex>
       </v-flex>
 
-      <v-flex xs6>
+      <v-flex xs6 class="mt-2">
         <v-flex xs12>
           <v-layout align-center justify-center v-if="userIsLogged">
             <pedais-menu></pedais-menu>
             <v-btn icon>
-              <v-icon>person</v-icon>
+              <v-icon large color="grey" medium>person</v-icon>
             </v-btn>
           </v-layout>
           <v-layout align-center justify-center v-else>

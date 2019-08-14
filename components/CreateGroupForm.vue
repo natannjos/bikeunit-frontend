@@ -166,7 +166,6 @@ import PictureInput from "./PictureInput";
 import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
 
 export default {
-  middleware: "auth",
   components: {
     PictureInput
   },

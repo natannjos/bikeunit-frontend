@@ -37,16 +37,17 @@
 <script>
 import getProperty from "../../utils/getProperty";
 export default {
-  //props: ["redirect"],
+  props: ["redirect"],
   data: () => ({
     type: "email",
     usernameOrEmail: "",
     password: "",
-    error: "",
-    redirect: ""
+    error: ""
   }),
   mounted() {
-    this.redirect = localStorage.getItem("auth.redirect") || "/";
+    if (!this.redirect) {
+      this.redirect = localStorage.getItem("auth.redirect") || "/";
+    }
   },
   methods: {
     async submit() {

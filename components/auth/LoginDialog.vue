@@ -20,7 +20,7 @@
             <v-flex xs12>
               <v-layout row wrap style="padding:10px">
                 <v-card-text class="text-xs-center">
-                  <login-form />
+                  <login-form redirect="/" />
                 </v-card-text>
               </v-layout>
             </v-flex>

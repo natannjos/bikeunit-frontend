@@ -2,7 +2,7 @@
   <div class="text-xs-center">
     <v-menu offset-y>
       <template v-slot:activator="{ on }">
-        <v-btn v-on="on" icon style="padding-top: 10px">
+        <v-btn v-on="on" icon>
           <v-badge color="amber accent-4">
             <template v-slot:badge>
               <span>{{ pedais.length }}</span>
@@ -21,7 +21,7 @@
           <template v-for="(item, index) in pedais">
             <v-list-tile :key="item.grupo" avatar @click>
               <v-list-tile-avatar>
-                <img :src="item.logo">
+                <img :src="item.logo" />
               </v-list-tile-avatar>
 
               <v-list-tile-content>
