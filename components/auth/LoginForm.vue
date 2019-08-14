@@ -1,6 +1,15 @@
 <template>
   <div>
-    <h6 v-if="error" class="error--text">{{ error }}</h6>
+    <v-alert
+      v-for="err in errors"
+      :key="err.index"
+      color="error"
+      icon="warning"
+      outline
+      dismissible
+      transition="scale-transition"
+      :value="true"
+    >{{err}}</v-alert>
     <form @keyup.enter="submit">
       <v-text-field
         class="my-input"
@@ -24,7 +33,6 @@
         type="password"
       />
     </form>
-
     <v-flex xs12>
       <v-btn large round class="orange" dark ripple @click.native="submit">
         <b>Login</b>
@@ -42,7 +50,7 @@ export default {
     type: "email",
     usernameOrEmail: "",
     password: "",
-    error: ""
+    errors: []
   }),
   mounted() {
     if (!this.redirect) {
@@ -51,31 +59,25 @@ export default {
   },
   methods: {
     async submit() {
-      //if (!(await this.$validator.validateAll())) return;
-
       const fields = {
         [this.type]: this.usernameOrEmail,
         password: this.password
       };
-      this.$auth
+      await this.$auth
         .loginWith("local", {
           data: fields
         })
         .then(() => {
+          this.$emit("toggleDialog");
           console.log(this.redirect);
           this.$router.push(this.redirect);
+        })
+        .catch(err => {
+          this.errors = getProperty(err, "response.data.non_field_errors") || [
+            getProperty(err, "response.data.email"),
+            getProperty(err, "response.data.password")
+          ];
         });
-      /*  try {
-        await this.$store.dispatch("/auth/login", {
-          fields
-          //endpoint: "/auth/login/"
-        });
-        //this.$router.push(this.redirect);
-      } catch (error) {
-        [this.error] = getProperty(error, "response.data.non_field_errors") || [
-          error.toString()
-        ];
-      } */
     }
   }
 };

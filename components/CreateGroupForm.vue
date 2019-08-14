@@ -1,6 +1,12 @@
 <template>
   <form>
-    <v-layout row wrap style="margin-bottom:20px; padding-right:20px; padding-left:20px">
+    <v-layout
+      row
+      wrap
+      align-center
+      justify-center
+      style="margin-bottom:20px; padding-right:20px; padding-left:20px"
+    >
       <v-flex xs12 lg12 md12>
         <v-card-text>
           <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
@@ -12,7 +18,7 @@
         </v-card-text>
       </v-flex>
       <v-flex xs12 md6 lg6>
-        <v-layout row wrap style="padding:10px">
+        <v-layout row wrap style="padding:10px" align-center>
           <v-flex xs12 sm3>
             <h3>Sua Foto</h3>
             <v-layout justify-center align-center column>
@@ -67,7 +73,39 @@
               placeholder="Nome do Grupo (Obrigatório)"
             ></v-text-field>
           </v-flex>
-
+          <v-layout align-center justify-center>
+            <v-flex xs4>
+              <v-select
+                v-model="estadoGrupo"
+                :items="siglas"
+                color="orange"
+                height="10px"
+                label="Estado"
+                required
+                outline
+                @input="$v.estadoGrupo.$touch()"
+                @blur="$v.estadoGrupo.$touch()"
+                :error-messages="estadoGrupoErrors"
+                prepend-inner-icon="map"
+              ></v-select>
+            </v-flex>
+            <v-flex xs8>
+              <v-text-field
+                v-model="cidadeGrupo"
+                class="my-input"
+                outline
+                required
+                color="orange"
+                height="10px"
+                label="Cidade do Grupo*"
+                @input="$v.cidadeGrupo.$touch()"
+                @blur="$v.cidadeGrupo.$touch()"
+                :error-messages="cidadeGrupoErrors"
+                prepend-inner-icon="place"
+                placeholder="Cidade do Grupo(Obrigatório)"
+              ></v-text-field>
+            </v-flex>
+          </v-layout>
           <v-flex xs12>
             <v-text-field
               class="my-input"
@@ -83,7 +121,6 @@
               @blur="$v.email.$touch()"
             ></v-text-field>
           </v-flex>
-
           <v-flex xs12>
             <v-text-field
               v-model="password"
@@ -124,31 +161,27 @@
         </v-layout>
       </v-flex>
       <v-flex xs12 md6 lg6>
-        <v-layout align-center justify-center column>
-          <v-flex>
-            <h3>Foto do Grupo</h3>
-          </v-flex>
-          <no-ssr placeholder="Carregando...">
-            <picture-input
-              ref="pictureInput"
-              margin="16"
-              accept="image/jpeg, image/png"
-              button-class="btn"
-              :custom-strings="{
+        <h3>Foto do Grupo</h3>
+        <no-ssr placeholder="Carregando...">
+          <picture-input
+            ref="pictureInput"
+            margin="16"
+            accept="image/jpeg, image/png"
+            button-class="btn"
+            :custom-strings="{
                   upload: '<h1>Bummer!</h1>',
                   }"
-              :crop="false"
-              :toggleAspectRatio="true"
-              @change="onChange"
-              removeButtonClass="red darken-1"
-              radius="50"
-              :zIndex="0"
-              height="450"
-              width="450"
-              v-model="logo"
-            ></picture-input>
-          </no-ssr>
-        </v-layout>
+            :crop="false"
+            :toggleAspectRatio="true"
+            @change="onChange"
+            removeButtonClass="red darken-1"
+            radius="50"
+            :zIndex="0"
+            height="450"
+            width="450"
+            v-model="logo"
+          ></picture-input>
+        </no-ssr>
       </v-flex>
 
       <v-flex xs12>
@@ -163,8 +196,14 @@
 
 <script>
 import PictureInput from "./PictureInput";
-import { required, minLength, email, sameAs } from "vuelidate/lib/validators";
-
+import {
+  required,
+  minLength,
+  maxLength,
+  email,
+  sameAs
+} from "vuelidate/lib/validators";
+import axios from "axios";
 export default {
   components: {
     PictureInput
@@ -178,7 +217,10 @@ export default {
       password2: "",
       show: false,
       logo: "",
-      userImage: ""
+      userImage: "",
+      estadoGrupo: "",
+      cidadeGrupo: "",
+      estados: []
     };
   },
   validations: {
@@ -201,6 +243,15 @@ export default {
     email: {
       required,
       email
+    },
+    cidadeGrupo: {
+      required,
+      minLength: minLength(2)
+    },
+    estadoGrupo: {
+      required,
+      minLength: minLength(2),
+      maxLength: maxLength(2)
     }
   },
   methods: {
@@ -259,7 +310,40 @@ export default {
       !this.$v.password2.sameAsPassword &&
         errors.push("As senhas devem ser iguais.");
       return errors;
+    },
+    estadoGrupoErrors() {
+      const errors = [];
+      if (!this.$v.estadoGrupo.$dirty) return errors;
+      !this.$v.estadoGrupo.minLength &&
+        errors.push("Campo deve ter no mínimo 2 caracteres");
+      !this.$v.estadoGrupo.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
+    cidadeGrupoErrors() {
+      const errors = [];
+      if (!this.$v.cidadeGrupo.$dirty) return errors;
+      !this.$v.cidadeGrupo.minLength &&
+        errors.push("Campo deve ter no mínimo 3 caracteres");
+      !this.$v.cidadeGrupo.required && errors.push("Campo Obrigatório.");
+      return errors;
+    },
+    siglas() {
+      return this.estados.map(estado => estado.sigla);
     }
+  },
+  mounted() {
+    var headers = {
+      "Access-Control-Allow-Origin": "*",
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    };
+    axios
+      .get(
+        "https://servicodados.ibge.gov.br/api/v1/localidades/estados/",
+        headers
+      )
+      .then(res => (this.estados = res.data))
+      .catch(err => console.log("Errou: ", err.response));
   }
 };
 </script>

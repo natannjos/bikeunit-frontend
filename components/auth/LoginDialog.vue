@@ -20,7 +20,7 @@
             <v-flex xs12>
               <v-layout row wrap style="padding:10px">
                 <v-card-text class="text-xs-center">
-                  <login-form redirect="/" />
+                  <login-form redirect="/" v-on:toggleDialog="closeDialog" />
                 </v-card-text>
               </v-layout>
             </v-flex>
@@ -48,6 +48,11 @@ export default {
     return {
       dialog: false
     };
+  },
+  methods: {
+    closeDialog() {
+      this.dialog = false;
+    }
   }
 };
 </script>

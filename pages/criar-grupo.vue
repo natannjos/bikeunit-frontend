@@ -1,13 +1,20 @@
 <template>
   <v-container grid-list-md text-xs-center>
     <v-card elevation="2" transparent class="colored-border">
-      <create-group-form></create-group-form>
+      <create-group-logged-form v-if="isLoggedIn"></create-group-logged-form>
+      <create-group-form v-else></create-group-form>
     </v-card>
   </v-container>
 </template>
 <script>
 import CreateGroupForm from "~/components/CreateGroupForm";
+import CreateGroupLoggedForm from "~/components/CreateGroupLoggedForm";
 export default {
-  components: { CreateGroupForm }
+  components: { CreateGroupForm, CreateGroupLoggedForm },
+  computed: {
+    isLoggedIn() {
+      return this.$auth.loggedIn;
+    }
+  }
 };
 </script>
