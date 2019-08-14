@@ -104,7 +104,7 @@
 </template>
 
 <script>
-import PictureInput from "./PictureInput";
+import PictureInput from "../PictureInput";
 import { required, minLength, maxLength } from "vuelidate/lib/validators";
 import axios from "axios";
 export default {

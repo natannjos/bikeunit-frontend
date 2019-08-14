@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import PedaisMenu from "./PedaisMenu";
-import LoginDialog from "./auth/LoginDialog";
+import PedaisMenu from "../menus/PedaisMenu";
+import LoginDialog from "../auth/LoginDialog";
 export default {
   components: {
     PedaisMenu,

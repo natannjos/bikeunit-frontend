@@ -7,8 +7,8 @@
   </v-container>
 </template>
 <script>
-import CreateGroupForm from "~/components/CreateGroupForm";
-import CreateGroupLoggedForm from "~/components/CreateGroupLoggedForm";
+import CreateGroupForm from "~/components/forms/CreateGroupForm";
+import CreateGroupLoggedForm from "~/components/forms/CreateGroupLoggedForm";
 export default {
   components: { CreateGroupForm, CreateGroupLoggedForm },
   computed: {

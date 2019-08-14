@@ -195,7 +195,7 @@
 </template>
 
 <script>
-import PictureInput from "./PictureInput";
+import PictureInput from "../PictureInput";
 import {
   required,
   minLength,
@@ -234,7 +234,7 @@ export default {
     },
     password: {
       required,
-      minLength: minLength(8)
+      minLength: minLength(3)
     },
     password2: {
       required,
@@ -299,7 +299,7 @@ export default {
       const errors = [];
       if (!this.$v.password.$dirty) return errors;
       !this.$v.password.minLength &&
-        errors.push("Campo deve ter no mínimo 8 caracteres");
+        errors.push("Campo deve ter no mínimo 3 caracteres");
       !this.$v.password.required && errors.push("Campo Obrigatório.");
       return errors;
     },

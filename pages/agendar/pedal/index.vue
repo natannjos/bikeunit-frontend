@@ -6,7 +6,8 @@
           <v-card-text>
             <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
               <span style="letter-spacing: 1px;" class="super-bold">
-                agendar<span class="orange--text">Pedal</span>
+                agendar
+                <span class="orange--text">Pedal</span>
               </span>
             </h2>
           </v-card-text>
@@ -18,7 +19,7 @@
 </template>
 
 <script>
-import CreatePedal from "~/components/CreatePedal";
+import CreatePedal from "~/components/forms/CreatePedal";
 export default {
   middleware: "auth",
   components: {

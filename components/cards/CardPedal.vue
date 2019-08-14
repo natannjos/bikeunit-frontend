@@ -100,7 +100,7 @@
 </template>
 
 <script>
-import PedalDialog from "./PedalDialog";
+import PedalDialog from "../dialogs/PedalDialog";
 export default {
   components: {
     PedalDialog

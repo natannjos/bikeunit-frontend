@@ -3,7 +3,8 @@
     <v-flex xs12>
       <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
         <span class="super-bold">
-          pedais<span class="orange--text">Agendados</span>
+          pedais
+          <span class="orange--text">Agendados</span>
         </span>
       </h2>
     </v-flex>
@@ -32,7 +33,7 @@
 </template>
 
 <script>
-import CardPedal from "./CardPedal";
+import CardPedal from "./cards/CardPedal";
 export default {
   components: {
     CardPedal

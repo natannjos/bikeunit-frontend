@@ -2,23 +2,24 @@
   <v-container grid-list-md text-xs-center>
     <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
       <span style="letter-spacing: 1px;" class="super-bold">
-        admin<span class="orange--text">Grupo</span>
+        admin
+        <span class="orange--text">Grupo</span>
       </span>
     </h2>
     <div v-for="pedal in pedais" :key="pedal.nome" style="margin-top:20px">
-      <pedal-card-admin :pedal=pedal></pedal-card-admin>
+      <pedal-card-admin :pedal="pedal"></pedal-card-admin>
     </div>
   </v-container>
 </template>
 
 <script>
-import PedalCardAdmin from "~/components/PedalCardAdmin";
+import PedalCardAdmin from "~/components/cards/PedalCardAdmin";
 export default {
   middleware: "auth",
   components: {
     PedalCardAdmin
   },
-  computed:{
+  computed: {
     pedais() {
       let pedaisAgendados = this.$store.state.pedais.all;
       let grupos = this.$store.state.grupos.all;
