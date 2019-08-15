@@ -6,6 +6,13 @@
 
     <v-dialog v-model="dialog" max-width="510">
       <v-card elevation="2" transparent class="colored-border">
+        <v-layout align-end justify-end row>
+          <v-flex class="text-lg-right">
+            <v-btn flat icon @click="closeDialog">
+              <v-icon>close</v-icon>
+            </v-btn>
+          </v-flex>
+        </v-layout>
         <v-layout align-center justify-center>
           <v-flex xs12>
             <v-flex xs12>

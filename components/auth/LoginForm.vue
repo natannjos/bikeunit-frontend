@@ -14,6 +14,7 @@
       <v-text-field
         class="my-input"
         outline
+        type="email"
         v-model="email"
         :error-messages="emailErrors"
         color="orange"
