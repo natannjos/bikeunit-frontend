@@ -1,5 +1,10 @@
 import colors from "vuetify/es5/util/colors";
-
+const env = {
+  API_URL: process.env.API_URL || "http://localhost:8000/api/v1",
+  API_URL_BROWSER:
+    process.env.API_URL_BROWSER || "http://localhost:8000/api/v1",
+  WS_URL: process.env.WS_URL || "localhost:8000"
+};
 export default {
   mode: "universal",
   /*
@@ -94,13 +99,13 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: "http://192.168.1.128:8000/api/v1/auth/login/",
+            url: `${env.API_URL}/auth/login/`,
             method: "post",
             propertyName: "key"
           },
-          logout: "http://192.168.1.128:8000/api/v1/auth/logout/",
+          logout: `${env.API_URL}/auth/logout/`,
           user: {
-            url: "http://192.168.1.128:8000/api/v1/auth/user/",
+            url: `${env.API_URL}/auth/user/`,
             method: "get",
             propertyName: false
           }
@@ -141,12 +146,7 @@ export default {
   //   if (!from) return 'slide-left'
   //   return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
   // }
-  env: {
-    API_URL: process.env.API_URL || "http://192.168.1.128:8000/api/v1",
-    API_URL_BROWSER:
-      process.env.API_URL_BROWSER || "http://192.168.1.128:8000/api/v1",
-    WS_URL: process.env.WS_URL || "192.168.1.128:8000"
-  },
+
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

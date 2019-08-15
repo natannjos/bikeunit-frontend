@@ -5,7 +5,7 @@
       <h1 class="white--text mb-2 display-1 text-xs-center" style="margin-top: 20px">
         <span class="letra-espacada">
           Bem Vindo
-          <span v-show="username">{{username}}</span>
+          <span v-if="username">{{username}}</span>
         </span>
       </h1>
       <v-flex xs12 md4 xs2 class="text-xs-center">
@@ -34,7 +34,8 @@ export default {
       return this.$auth.loggedIn;
     },
     username() {
-      return this.$auth.user.username;
+      if (this.loggedIn) return this.$auth.user.username;
+      return false;
     }
   }
 };
