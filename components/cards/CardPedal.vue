@@ -88,7 +88,9 @@
           </v-list-tile-content>
         </v-list-tile>
       </ul>
-      <pedal-dialog :pedal="pedal" v-show="pedal.info"></pedal-dialog>
+
+      <pedal-dialog :pedal="pedal" v-show="pedal.info" participando="false"></pedal-dialog>
+
       <v-layout row justify-center v-show="!pedal.info">
         <v-btn round class="amber accent-4 mt-5" dark>
           Participar&nbsp;&nbsp;&nbsp;

@@ -17,29 +17,17 @@
 
           <v-spacer></v-spacer>
         </v-toolbar>
-        <v-list two-line>
-          <template v-for="item in pedais">
-            <v-list-tile :key="item.grupo" avatar @click="showDialog">
-              <v-list-tile-avatar>
-                <img :src="item.logo" />
-              </v-list-tile-avatar>
-
-              <v-list-tile-content>
-                <v-list-tile-title v-html="item.destino"></v-list-tile-title>
-                <v-list-tile-sub-title>{{item.dia}} - {{item.hora}}</v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </template>
-        </v-list>
+        <pedal-dialog-menu :pedais="pedais" />
       </v-card>
     </v-menu>
   </div>
 </template>
 
 <script>
+import PedalDialogMenu from "../dialogs/PedalDialogMenu";
 export default {
-  methods: {
-    showDialog() {}
+  components: {
+    PedalDialogMenu
   },
   computed: {
     pedais() {

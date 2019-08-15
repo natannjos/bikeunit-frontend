@@ -3,7 +3,10 @@
     <v-layout column align-center row justify-center class="white--text">
       <img src="/images/logo.png" alt="bikeunit" height="300" />
       <h1 class="white--text mb-2 display-1 text-xs-center" style="margin-top: 20px">
-        <span class="letra-espacada">Seja Bem Vindo!</span>
+        <span class="letra-espacada">
+          Bem Vindo
+          <span v-show="username">{{username}}</span>
+        </span>
       </h1>
       <v-flex xs12 md4 xs2 class="text-xs-center">
         <nuxt-link :to="{ name: 'auth-registration' }" class="no-decoration" v-show="!loggedIn">
@@ -29,6 +32,9 @@ export default {
   computed: {
     loggedIn() {
       return this.$auth.loggedIn;
+    },
+    username() {
+      return this.$auth.user.username;
     }
   }
 };

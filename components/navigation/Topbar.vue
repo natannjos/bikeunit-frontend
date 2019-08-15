@@ -14,10 +14,13 @@
       <v-flex xs6 class="mt-2">
         <v-flex xs12>
           <v-layout align-center justify-center v-if="userIsLogged">
-            <pedais-menu></pedais-menu>
-            <v-btn icon>
-              <v-icon large color="grey" medium>person</v-icon>
-            </v-btn>
+            <v-flex shrink style="margin-right:5px">
+              <pedais-menu />
+            </v-flex>
+
+            <v-flex shrink>
+              <profile-menu />
+            </v-flex>
           </v-layout>
           <v-layout align-center justify-center v-else>
             <login-dialog></login-dialog>
@@ -30,11 +33,13 @@
 
 <script>
 import PedaisMenu from "../menus/PedaisMenu";
+import ProfileMenu from "../menus/ProfileMenu";
 import LoginDialog from "../auth/LoginDialog";
 export default {
   components: {
     PedaisMenu,
-    LoginDialog
+    LoginDialog,
+    ProfileMenu
   },
   computed: {
     userIsLogged() {

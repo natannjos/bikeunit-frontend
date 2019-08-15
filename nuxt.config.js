@@ -94,13 +94,13 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: "http://localhost:8000/api/v1/auth/login/",
+            url: "http://192.168.1.128:8000/api/v1/auth/login/",
             method: "post",
             propertyName: "key"
           },
-          logout: "http://localhost:8000/api/v1/auth/logout/",
+          logout: "http://192.168.1.128:8000/api/v1/auth/logout/",
           user: {
-            url: "http://localhost:8000/api/v1/auth/user/",
+            url: "http://192.168.1.128:8000/api/v1/auth/user/",
             method: "get",
             propertyName: false
           }
@@ -142,10 +142,10 @@ export default {
   //   return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
   // }
   env: {
-    API_URL: process.env.API_URL || "http://localhost:8000/api/v1",
+    API_URL: process.env.API_URL || "http://192.168.1.128:8000/api/v1",
     API_URL_BROWSER:
-      process.env.API_URL_BROWSER || "http://localhost:8000/api/v1",
-    WS_URL: process.env.WS_URL || "localhost:8000"
+      process.env.API_URL_BROWSER || "http://192.168.1.128:8000/api/v1",
+    WS_URL: process.env.WS_URL || "192.168.1.128:8000"
   },
   /*
    ** vuetify module configuration

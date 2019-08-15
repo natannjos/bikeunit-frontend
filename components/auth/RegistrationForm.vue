@@ -41,16 +41,16 @@
                 <v-text-field
                   class="my-input"
                   outline
-                  v-model.trim="username"
+                  v-model="username"
                   :error-messages="usernameErrors"
                   color="orange"
                   height="10px"
                   label="Nome de usuário"
-                  prepend-inner-icon="alternate_username"
+                  prepend-inner-icon="person"
                   placeholder="Obrigatório"
                   hint="Apenas letras, números e símbolos @ /. / + / - / _."
-                  :counter="15"
-                  :max="15"
+                  :counter="100"
+                  :max="100"
                   @input="$v.username.$touch()"
                   @blur="$v.username.$touch()"
                 ></v-text-field>
@@ -149,7 +149,7 @@ export default {
     username: {
       required,
       minLength: minLength(3),
-      maxLength: maxLength(15)
+      maxLength: maxLength(100)
     },
     password: {
       required,
@@ -206,7 +206,7 @@ export default {
       !this.$v.username.minLength &&
         errors.push("Campo deve ter no mínimo 3 caracteres");
       !this.$v.username.maxLength &&
-        errors.push("Campo deve ter no máximo 15 caracteres");
+        errors.push("Campo deve ter no máximo 100 caracteres");
       !this.$v.username.required && errors.push("Campo Obrigatório.");
       return errors;
     },
