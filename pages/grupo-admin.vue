@@ -15,7 +15,6 @@
 <script>
 import PedalCardAdmin from "~/components/cards/PedalCardAdmin";
 export default {
-  middleware: "auth",
   components: {
     PedalCardAdmin
   },

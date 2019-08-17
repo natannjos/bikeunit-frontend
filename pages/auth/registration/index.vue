@@ -25,7 +25,7 @@ import VerifyEmailDialog from "~/components/auth/VerifyEmailDialog.vue";
 import mailProviders from "~/utils/mailProviders"; //eslint-disable-line
 export default {
   name: "auth-registration",
-  auth: false,
+  auth: "guest",
   data: () => ({
     email: "",
     dialog: false

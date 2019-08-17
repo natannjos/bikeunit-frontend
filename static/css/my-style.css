@@ -41,5 +41,9 @@
   color: #fc8600;
 }
 .v-dialog__content.v-dialog__content--active {
-  z-index: 10005
+  z-index: 10005;
+}
+.no-decoration {
+  color: #ffffff;
+  text-decoration: none;
 }

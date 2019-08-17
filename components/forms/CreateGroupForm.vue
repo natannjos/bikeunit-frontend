@@ -11,8 +11,7 @@
         <v-card-text>
           <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
             <span style="letter-spacing: 1px;" class="super-bold">
-              criar
-              <span class="orange--text">Grupo</span>
+              criar<span class="orange--text">Grupo</span>
             </span>
           </h2>
         </v-card-text>

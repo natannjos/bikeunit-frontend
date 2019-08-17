@@ -95,6 +95,7 @@ export default {
 
   auth: {
     // Options
+
     strategies: {
       local: {
         endpoints: {
@@ -123,13 +124,14 @@ export default {
     tokenType: "Token"
   },
   router: {
+    middleware: ["auth"],
     // base: '/',
     mode: "history",
     linkActiveClass: "nuxt-link-active",
-    linkExactActiveClass: "nuxt-link-exact-active",
+    linkExactActiveClass: "nuxt-link-exact-active"
 
     // Run the middleware/user-agent.js on every pages
-    middleware: ["user-agent"] //, "auth"]
+    //middleware: ["user-agent"] //, "auth"]
     //extendRoutes(routes, resolve) {
     //  routes.push({
     //    name: "custom",

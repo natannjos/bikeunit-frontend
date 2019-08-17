@@ -48,8 +48,4 @@ export default {
 .letra-espacada {
   letter-spacing: 10px;
 }
-.no-decoration {
-  color: #ffffff;
-  text-decoration: none;
-}
 </style>

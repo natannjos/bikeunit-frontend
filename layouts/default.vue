@@ -1,13 +1,11 @@
 <template>
   <div id="app">
     <v-app light>
-      <v-container-fluid>
-        <topbar></topbar>
-        <v-content>
-          <nuxt />
-        </v-content>
-        <my-footer></my-footer>
-      </v-container-fluid>
+      <topbar></topbar>
+      <v-content>
+        <nuxt />
+      </v-content>
+      <my-footer></my-footer>
     </v-app>
   </div>
 </template>

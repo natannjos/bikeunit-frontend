@@ -10,6 +10,7 @@
 import CreateGroupForm from "~/components/forms/CreateGroupForm";
 import CreateGroupLoggedForm from "~/components/forms/CreateGroupLoggedForm";
 export default {
+  auth: false,
   components: { CreateGroupForm, CreateGroupLoggedForm },
   computed: {
     isLoggedIn() {

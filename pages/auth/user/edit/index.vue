@@ -12,7 +12,6 @@
 import UserEditForm from "~/components/auth/UserEditForm.vue";
 export default {
   name: "auth-user",
-  //middleware: "auth",
   components: { UserEditForm },
   computed: {
     user() {

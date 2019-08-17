@@ -35,7 +35,7 @@
     <v-card-text>
       <div class="title text-xs-center dark-grey--text font-weight-bold">
         {{ pedal.destino }}:
-        <span v-if="pedal.preco">{{ pedal.preco }}</span>
+        <span v-if="pedal.preco">R$ {{ pedal.preco }}</span>
         <span v-else>Gratuito</span>
       </div>
       <ul>

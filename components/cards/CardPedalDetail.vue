@@ -116,7 +116,7 @@
       {{pedal.info}}
       <v-layout column justify-center align-center>
         <v-flex shrink>
-          <v-btn small round class="red mt-4" dark @click.stop="sair" v-if="participando">
+          <v-btn small round class="orange mt-4" dark @click.stop="sair" v-if="participando">
             Sair da Lista&nbsp;&nbsp;&nbsp;
             <v-icon>close</v-icon>
           </v-btn>

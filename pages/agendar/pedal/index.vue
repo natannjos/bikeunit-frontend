@@ -21,7 +21,6 @@
 <script>
 import CreatePedal from "~/components/forms/CreatePedal";
 export default {
-  middleware: "auth",
   components: {
     CreatePedal
   }
