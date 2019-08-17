@@ -114,19 +114,23 @@
     </v-card-text>
     <v-card-text>
       {{pedal.info}}
-      <v-layout row justify-center>
-        <v-btn small round class="red mt-4" dark @click.stop="sair" v-if="participando">
-          Sair da Lista&nbsp;&nbsp;&nbsp;
-          <v-icon>close</v-icon>
-        </v-btn>
-        <v-btn small round class="orange mt-4" dark @click.stop="submit" v-else>
-          Participar&nbsp;&nbsp;&nbsp;
-          <v-icon>check</v-icon>
-        </v-btn>
-        <v-btn small round class="amber accent-3 mt-4" dark @click.stop="voltar">
-          Voltar&nbsp;&nbsp;&nbsp;
-          <v-icon>reply</v-icon>
-        </v-btn>
+      <v-layout column justify-center align-center>
+        <v-flex shrink>
+          <v-btn small round class="red mt-4" dark @click.stop="sair" v-if="participando">
+            Sair da Lista&nbsp;&nbsp;&nbsp;
+            <v-icon>close</v-icon>
+          </v-btn>
+          <v-btn small round class="orange mt-4" dark @click.stop="submit" v-else>
+            Participar&nbsp;&nbsp;&nbsp;
+            <v-icon>check</v-icon>
+          </v-btn>
+        </v-flex>
+        <v-flex shrink>
+          <v-btn small round class="amber accent-3 mt-4" dark @click.stop="voltar">
+            Voltar&nbsp;&nbsp;&nbsp;
+            <v-icon>reply</v-icon>
+          </v-btn>
+        </v-flex>
       </v-layout>
     </v-card-text>
   </v-card>

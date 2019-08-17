@@ -4,9 +4,9 @@
       <v-flex xs6>
         <v-flex xs12>
           <v-layout align-center justify-center>
-            <a href="/">
+            <nuxt-link :to="{name: 'index'}">
               <img src="/images/logo2.png" alt="logo2" height="50px" />
-            </a>
+            </nuxt-link>
           </v-layout>
         </v-flex>
       </v-flex>

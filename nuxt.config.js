@@ -1,9 +1,9 @@
 import colors from "vuetify/es5/util/colors";
 const env = {
-  API_URL: process.env.API_URL || "http://localhost:8000/api/v1",
+  API_URL: process.env.API_URL || "http://192.168.0.3:8000/api/v1",
   API_URL_BROWSER:
-    process.env.API_URL_BROWSER || "http://localhost:8000/api/v1",
-  WS_URL: process.env.WS_URL || "localhost:8000"
+    process.env.API_URL_BROWSER || "http://192.168.0.3:8000/api/v1",
+  WS_URL: process.env.WS_URL || "192.168.0.3:8000"
 };
 export default {
   mode: "universal",
