@@ -34,11 +34,11 @@
 
             <v-card-text class="text-xs-center" @click.stop="dialog = false">
               Você não tem uma conta?
-              <nuxt-link :to="{ name: 'auth-registration' }">Cadastre-se!</nuxt-link>
+              <nuxt-link :to="{ name: 'auth-cadastro' }">Cadastre-se!</nuxt-link>
             </v-card-text>
             <v-card-text class="text-xs-center" @click.stop="dialog = false">
               Esqueceu a senha?
-              <nuxt-link :to="{ name: 'auth-password-reset' }">Recuperar!</nuxt-link>
+              <nuxt-link :to="{ name: 'auth-senha-reset' }">Recuperar!</nuxt-link>
             </v-card-text>
           </v-flex>
         </v-layout>

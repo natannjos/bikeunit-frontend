@@ -23,7 +23,7 @@
 export default {
   data: () => ({
     items: [
-      { title: "Meus Dados", icon: "person", url: "auth-user-edit" },
+      { title: "Meus Dados", icon: "person", url: "auth-usuario-edita" },
       { title: "Logout", icon: "logout", url: "auth-logout" }
     ]
   }),

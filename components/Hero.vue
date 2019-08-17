@@ -9,7 +9,7 @@
         </span>
       </h1>
       <v-flex xs12 md4 xs2 class="text-xs-center">
-        <nuxt-link :to="{ name: 'auth-registration' }" class="no-decoration" v-show="!loggedIn">
+        <nuxt-link :to="{ name: 'auth-cadastro' }" class="no-decoration" v-show="!loggedIn">
           <v-btn round class="yellow darken-4 lighten-2 mt-5" dark>
             Cadastre-se&nbsp;&nbsp;&nbsp;
             <v-icon>person_add</v-icon>

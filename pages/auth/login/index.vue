@@ -23,7 +23,7 @@
         <br />
         <p>
           Você não tem uma conta?
-          <nuxt-link :to="{ name: 'auth-registration' }">Cadastre-se!</nuxt-link>
+          <nuxt-link :to="{ name: 'auth-cadastro' }">Cadastre-se!</nuxt-link>
         </p>
         <br />
         <p>
