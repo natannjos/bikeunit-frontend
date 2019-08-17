@@ -3,7 +3,7 @@
     <v-layout align-center justify-space-around>
       <v-spacer></v-spacer>
       <v-flex>
-        <v-layout align-center justify-center>
+        <v-layout justify-center>
           <nuxt-link :to="{name: 'index'}">
             <img src="/images/logo2.png" alt="logo2" height="50px" />
           </nuxt-link>
@@ -11,12 +11,12 @@
       </v-flex>
       <v-spacer></v-spacer>
       <v-flex>
-        <v-layout align-center justify-center v-if="userIsLogged">
+        <v-layout align-end justify-center v-if="userIsLogged">
           <pedais-menu />
 
           <profile-menu />
         </v-layout>
-        <v-layout align-center justify-space-around v-else>
+        <v-layout v-else>
           <login-dialog></login-dialog>
         </v-layout>
       </v-flex>
