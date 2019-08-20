@@ -1,7 +1,7 @@
 <template>
   <v-menu offset-y class="text-xs-center">
     <template v-slot:activator="{ on }">
-      <v-btn v-on="on" icon class="pt-1">
+      <v-btn v-on="on" icon class="pt-2">
         <v-badge color="orange white--text" overlap left>
           <template v-slot:badge>
             <span color>{{ pedais.length }}</span>

@@ -2,7 +2,7 @@
   <v-menu offset-y>
     <template v-slot:activator="{ on }">
       <v-btn v-on="on" icon>
-        <v-avatar size="32px">
+        <v-avatar size="34px">
           <img v-if="user.avatar" :src="user.avatar" alt="Avatar" />
           <v-icon v-else>person</v-icon>
         </v-avatar>

@@ -19,7 +19,7 @@
 <script>
 import PasswordResetConfirmForm from "~/components/auth/PasswordResetConfirmForm.vue";
 export default {
-  name: "auth-password-reset-confirm",
+  name: "auth-senha-reset-confirma",
 
   methods: {
     successResetConfirm() {

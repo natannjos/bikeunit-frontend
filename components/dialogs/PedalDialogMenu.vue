@@ -16,7 +16,7 @@
     </v-list>
 
     <v-dialog v-model="dialog" max-width="510">
-      <card-pedal-detail :pedal="currentPedal" v-on:close="dialog=false" :participando="true"/>
+      <card-pedal-detail :pedal="currentPedal" v-on:close="dialog=false" :participando="true" />
     </v-dialog>
   </span>
 </template>

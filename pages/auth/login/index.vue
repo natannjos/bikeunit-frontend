@@ -28,7 +28,7 @@
         <br />
         <p>
           Esqueceu a senha?
-          <nuxt-link :to="{ name: 'auth-password-reset' }">Recuperar!</nuxt-link>
+          <nuxt-link :to="{ name: 'auth-senha-reset' }">Recuperar!</nuxt-link>
         </p>
       </v-flex>
     </v-layout>

@@ -97,42 +97,32 @@
       </v-list-tile>
     </v-list>
     <hr style="margin: 0 20% 0 20%" />
-    <v-card-text v-show="pedal.info">
-      <v-flex xs12>
-        <v-layout align-center justify-space-around>
-          <v-flex xs12 align-center flexbox>
-            <p class="text-xs-center" style="margin-bottom:0">
-              <v-icon large class="orange--text">directions_bike</v-icon>
-            </p>
-            <p
-              class="text-xs-center dark-grey--text orange--text titulos"
-              style="font-size: 20px;margin-bottom:0"
-            >Informações Adicionais</p>
-          </v-flex>
-        </v-layout>
+    <v-layout justify-center v-show="pedal.info" class="mt-2">
+      <v-flex xs12 class="text-xs-center">
+        <v-icon large class="orange--text">directions_bike</v-icon>
+        <br />
+        <span class="orange--text title">Informações Adicionais</span>
       </v-flex>
-    </v-card-text>
-    <v-card-text>
-      {{pedal.info}}
-      <v-layout column justify-center align-center>
-        <v-flex shrink>
-          <v-btn small round class="orange darken-4" dark @click.stop="sair" v-if="participando">
-            Sair da Lista&nbsp;&nbsp;&nbsp;
-            <v-icon>close</v-icon>
-          </v-btn>
-          <v-btn small round class="orange mt-4" dark @click.stop="submit" v-else>
-            Participar&nbsp;&nbsp;&nbsp;
-            <v-icon>check</v-icon>
-          </v-btn>
-        </v-flex>
-        <v-flex shrink>
-          <v-btn small round class="amber accent-3 mt-4" dark @click.stop="voltar">
-            Voltar&nbsp;&nbsp;&nbsp;
-            <v-icon>reply</v-icon>
-          </v-btn>
-        </v-flex>
-      </v-layout>
-    </v-card-text>
+    </v-layout>
+    <v-card-text class="text-xs-center">{{pedal.info}}</v-card-text>
+    <v-layout column justify-center align-center>
+      <v-flex shrink>
+        <v-btn small round class="orange darken-4" dark @click.stop="sair" v-if="participando">
+          Sair da Lista&nbsp;&nbsp;&nbsp;
+          <v-icon>close</v-icon>
+        </v-btn>
+        <v-btn small round class="orange mt-4" dark @click.stop="submit" v-else>
+          Participar&nbsp;&nbsp;&nbsp;
+          <v-icon>check</v-icon>
+        </v-btn>
+      </v-flex>
+      <v-flex shrink>
+        <v-btn small round class="amber accent-3 mt-4" dark @click.stop="voltar">
+          Voltar&nbsp;&nbsp;&nbsp;
+          <v-icon>reply</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
   </v-card>
 </template>
 

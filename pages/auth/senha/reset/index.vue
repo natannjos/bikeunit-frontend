@@ -16,7 +16,7 @@
 <script>
 import PasswordResetForm from "~/components/auth/PasswordResetForm.vue";
 export default {
-  name: "auth-password-reset",
+  name: "auth-senha-reset",
   auth: false,
   methods: {
     successReset() {
