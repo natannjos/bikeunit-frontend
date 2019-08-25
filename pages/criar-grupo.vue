@@ -14,7 +14,7 @@ export default {
   components: { CreateGroupForm, CreateGroupLoggedForm },
   computed: {
     isLoggedIn() {
-      return this.$auth.loggedIn;
+      return this.$store.state.auth.loggedIn;
     }
   }
 };

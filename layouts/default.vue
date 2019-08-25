@@ -2,7 +2,7 @@
   <div id="app">
     <v-app light>
       <topbar></topbar>
-      <v-content>
+      <v-content class="mb-4">
         <nuxt />
       </v-content>
       <my-footer></my-footer>

@@ -1,10 +1,11 @@
 <template>
-  <v-container class="text-xs-center" style="padding:0;" fluid>
-    <v-layout column wrap class="my-5 px-4">
+  <v-container class="text-xs-center px-0">
+    <v-layout column wrap class="my-5 px-2">
       <v-flex xs12>
         <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
           <span class="super-bold">
-            pedais<span class="orange--text">Agendados</span>
+            pedais
+            <span class="orange--text">Agendados</span>
           </span>
         </h2>
       </v-flex>

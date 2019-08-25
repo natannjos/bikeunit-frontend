@@ -31,7 +31,7 @@
 export default {
   computed: {
     loggedIn() {
-      return this.$auth.loggedIn;
+      return this.$store.state.auth.loggedIn;
     },
     username() {
       if (this.loggedIn) return this.$auth.user.username;

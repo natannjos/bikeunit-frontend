@@ -37,7 +37,7 @@ export default {
   },
   computed: {
     userIsLogged() {
-      return this.$auth.loggedIn;
+      return this.$store.state.auth.loggedIn;
     }
   }
 };
