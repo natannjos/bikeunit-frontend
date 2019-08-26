@@ -1,5 +1,5 @@
 <template>
-  <v-menu offset-y class="text-xs-center" open-on-hover="true">
+  <v-menu offset-y class="text-xs-center">
     <template v-slot:activator="{ on }">
       <v-btn v-on="on" icon class="pt-2">
         <v-badge color="orange white--text" overlap left>
