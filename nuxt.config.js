@@ -117,9 +117,9 @@ export default {
       logout: "/auth/logout/",
       home: "/"
     },
-    watchLoggedIn: true,
     resetOnError: true,
-    tokenType: "Token"
+    tokenType: "Token",
+    rewriteRedirects: true
   },
   router: {
     middleware: ["auth"],

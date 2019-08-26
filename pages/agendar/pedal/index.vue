@@ -6,8 +6,7 @@
           <v-card-text>
             <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
               <span style="letter-spacing: 1px;" class="super-bold">
-                agendar
-                <span class="orange--text">Pedal</span>
+                agendar<span class="orange--text">Pedal</span>
               </span>
             </h2>
           </v-card-text>

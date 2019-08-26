@@ -11,7 +11,8 @@
         <v-card-text>
           <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
             <span style="letter-spacing: 1px;" class="super-bold">
-              criar<span class="orange--text">Grupo</span>
+              criar
+              <span class="orange--text">Grupo</span>
             </span>
           </h2>
         </v-card-text>
@@ -161,26 +162,24 @@
       </v-flex>
       <v-flex xs12 md6 lg6>
         <h3>Foto do Grupo</h3>
-        <no-ssr placeholder="Carregando...">
-          <picture-input
-            ref="pictureInput"
-            margin="16"
-            accept="image/jpeg, image/png"
-            button-class="btn"
-            :custom-strings="{
+        <picture-input
+          ref="pictureInput"
+          margin="16"
+          accept="image/jpeg, image/png"
+          button-class="btn"
+          :custom-strings="{
                   upload: '<h1>Bummer!</h1>',
                   }"
-            :crop="false"
-            :toggleAspectRatio="true"
-            @change="onChange"
-            removeButtonClass="red darken-1"
-            radius="50"
-            :zIndex="0"
-            height="450"
-            width="450"
-            v-model="logo"
-          ></picture-input>
-        </no-ssr>
+          :crop="false"
+          :toggleAspectRatio="true"
+          @change="onChange"
+          removeButtonClass="red darken-1"
+          radius="50"
+          :zIndex="0"
+          height="450"
+          width="450"
+          v-model="logo"
+        ></picture-input>
       </v-flex>
 
       <v-flex xs12>

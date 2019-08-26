@@ -1,5 +1,5 @@
 <template>
-  <v-menu offset-y>
+  <v-menu offset-y open-on-hover="true">
     <template v-slot:activator="{ on }">
       <v-btn v-on="on" icon>
         <v-avatar size="34px">
