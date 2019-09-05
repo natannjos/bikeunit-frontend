@@ -8,7 +8,7 @@
           flat
         >
           <v-img
-            :src="pedal.logo"
+            :src="pedal.logoGrupo"
             lazy-src="https://picsum.photos/id/1077/200?blur=4"
             aspect-ratio="1"
             class="grey lighten-2"
@@ -29,12 +29,12 @@
     </v-layout>
     <v-card-title primary-title class="layout justify-center">
       <div class="text-md-center">
-        <div class="text-xs-center dark-grey--text title">{{ pedal.grupo }}</div>
+        <div class="text-xs-center dark-grey--text title">{{ pedal.nomeGrupo }}</div>
       </div>
     </v-card-title>
     <v-card-text>
       <div class="title text-xs-center dark-grey--text font-weight-bold">
-        {{ pedal.destino }}:
+        {{ pedal.nome_ou_destino }}:
         <span v-if="pedal.preco">R$ {{ pedal.preco }}</span>
         <span v-else>Gratuito</span>
       </div>
@@ -66,8 +66,8 @@
         <v-list-tile class="lista-pequena">
           <v-list-tile-content>
             <v-list-tile-title>
-              <strong>Dia:</strong>
-              {{ pedal.dia }}
+              <strong>Data:</strong>
+              {{ pedal.data }}
             </v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>

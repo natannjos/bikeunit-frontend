@@ -2,14 +2,14 @@
   <span>
     <v-list two-line>
       <template v-for="item in pedais">
-        <v-list-tile :key="item.grupo" avatar @click.stop="openDialog(item)">
+        <v-list-tile :key="item.nomeGrupo" avatar @click.stop="openDialog(item)">
           <v-list-tile-avatar>
-            <img :src="item.logo" />
+            <img :src="item.logoGrupo" />
           </v-list-tile-avatar>
 
           <v-list-tile-content>
-            <v-list-tile-title v-html="item.destino"></v-list-tile-title>
-            <v-list-tile-sub-title>{{item.dia}} - {{item.hora}}</v-list-tile-sub-title>
+            <v-list-tile-title v-html="item.nome_ou_destino"></v-list-tile-title>
+            <v-list-tile-sub-title>{{item.data}} - {{item.hora}}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
       </template>

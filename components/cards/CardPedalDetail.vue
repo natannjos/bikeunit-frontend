@@ -10,7 +10,7 @@
             flat
           >
             <v-img
-              :src="pedal.logo"
+              :src="pedal.logoGrupo"
               aspect-ratio="1"
               class="grey lighten-2"
               height="120"
@@ -38,11 +38,11 @@
         <div
           class="text-xs-center dark-grey--text orange--text titulos"
           style="font-size: 20px;"
-        >{{ pedal.nome }}</div>
+        >{{ pedal.nome_ou_destino }}</div>
         <div
           class="text-xs-center dark-grey--text orange--text titulos"
           style="font-size: 17px;"
-          v-show="pedal.destino"
+          v-show="pedal.nome_ou_destino"
         >
           {{ pedal.destino }}
           <span v-show="pedal.preco">: R${{ pedal.preco }}</span>
@@ -61,7 +61,7 @@
           </v-flex>
           <v-flex xs12>
             <strong>Dia:</strong>
-            {{ pedal.dia }}
+            {{ pedal.data }}
           </v-flex>
         </v-layout>
       </v-list-tile>

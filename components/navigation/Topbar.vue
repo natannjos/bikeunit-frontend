@@ -39,6 +39,11 @@ export default {
     userIsLogged() {
       return this.$store.state.auth.loggedIn;
     }
+  },
+  created() {
+    if (this.$store.state.auth.loggedIn) {
+      this.$store.dispatch("perfil/get");
+    }
   }
 };
 </script>

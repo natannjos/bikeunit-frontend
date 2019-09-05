@@ -4,7 +4,8 @@
       <v-flex xs12>
         <h2 class="display-1" style="margin-top:20px; margin-bottom:20px">
           <span class="super-bold">
-            pedais<span class="orange--text">Agendados</span>
+            pedais
+            <span class="orange--text">Agendados</span>
           </span>
         </h2>
       </v-flex>
@@ -22,7 +23,14 @@
         </v-flex>
 
         <!--Lista de Pedais-->
-        <v-flex xs12 sm6 md3 v-for="pedal in pedais" :key="pedal.nome" style="margin-bottom: 20px">
+        <v-flex
+          xs12
+          sm6
+          md3
+          v-for="pedal in pedais"
+          :key="pedal.nome_ou_destino"
+          style="margin-bottom: 20px"
+        >
           <!--Card de Pedal-->
           <card-pedal :pedal="pedal"></card-pedal>
         </v-flex>
@@ -40,15 +48,7 @@ export default {
 
   computed: {
     pedais() {
-      let pedaisAgendados = this.$store.state.pedais.all;
-      let grupos = this.$store.state.grupos.all;
-      pedaisAgendados.forEach(pedal => {
-        let grupo = grupos.find(x => x.id == pedal.grupoId);
-        pedal.grupo = grupo.nome;
-        pedal.logo = grupo.logo;
-      });
-
-      return pedaisAgendados;
+      return this.$store.getters["pedais/allPedais"];
     }
   }
 };

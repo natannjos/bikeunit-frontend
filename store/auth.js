@@ -6,6 +6,7 @@ export const getters = {};
 
 export const actions = {
   async registration({ dispatch }, { fields, authAfter }) {
+    console.log("Rodou");
     const { data } = await this.$axios(api.registration(fields));
 
     if (authAfter) {

@@ -1,9 +1,5 @@
 import colors from "vuetify/es5/util/colors";
-const env = {
-  API_URL: process.env.API_URL || "http://192.168.0.3:8000/api",
-  API_URL_BROWSER: process.env.API_URL_BROWSER || "http://192.168.0.3:8000/api",
-  WS_URL: process.env.WS_URL || "192.168.0.3:8000"
-};
+import { base_urls } from "./env";
 export default {
   mode: "universal",
   /*
@@ -99,13 +95,13 @@ export default {
       local: {
         endpoints: {
           login: {
-            url: `${env.API_URL}/auth/login/`,
+            url: `${base_urls.API_URL}/auth/login/`,
             method: "post",
             propertyName: "key"
           },
-          logout: `${env.API_URL}/auth/logout/`,
+          logout: `${base_urls.API_URL}/auth/logout/`,
           user: {
-            url: `${env.API_URL}/auth/user/`,
+            url: `${base_urls.API_URL}/auth/user/`,
             method: "get",
             propertyName: false
           }

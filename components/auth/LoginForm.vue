@@ -98,7 +98,9 @@ export default {
         .then(() => {
           this.email = "";
           this.password = "";
+
           this.$emit("toggleDialog");
+
           console.log(this.redirect);
           this.$router.push(this.redirect);
         })

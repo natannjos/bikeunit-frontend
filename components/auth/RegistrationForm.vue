@@ -124,6 +124,7 @@
 import getProperty from "~/utils/getProperty"; // eslint-disable-line
 import { checkExist } from "~/api/auth"; // eslint-disable-line
 import PictureInput from "../PictureInput";
+import { auth as api } from "~/api";
 import {
   required,
   minLength,
@@ -166,13 +167,25 @@ export default {
   },
   methods: {
     async submit() {
-      const { username, email, password, password2 } = this.$data;
+      const userData = {
+        username: this.username,
+        email: this.email,
+        password1: this.password,
+        password2: this.password2
+      };
+      const fields = {
+        email: this.email,
+        password: this.password
+      };
       try {
-        await this.$store.dispatch("auth/registration", {
-          fields: { username, email, password, password2 }
-        });
+        await this.$axios(api.registration(userData));
         this.$emit("success", email);
-        this.resetData();
+        await this.$auth.loginWith("local", {
+          data: fields
+        });
+        this.$router.push({
+          path: "/"
+        });
       } catch (error) {
         const backendErrors = getProperty(error, "response.data");
         if (backendErrors) this.showBackendErrors(backendErrors);

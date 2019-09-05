@@ -6,7 +6,7 @@
         <span class="orange--text">Grupo</span>
       </span>
     </h2>
-    <div v-for="pedal in pedais" :key="pedal.nome" style="margin-top:20px">
+    <div v-for="pedal in pedais" :key="pedal.nome_ou_destino" style="margin-top:20px">
       <pedal-card-admin :pedal="pedal"></pedal-card-admin>
     </div>
   </v-container>
@@ -20,14 +20,7 @@ export default {
   },
   computed: {
     pedais() {
-      let pedaisAgendados = this.$store.state.pedais.all;
-      let grupos = this.$store.state.grupos.all;
-      pedaisAgendados.forEach(pedal => {
-        let grupo = grupos.find(x => x.id == pedal.grupoId);
-        pedal.grupo = grupo.nome;
-        pedal.logo = grupo.logo;
-      });
-      return pedaisAgendados;
+      return this.$store.getters["pedais/allPedais"];
     }
   }
 };

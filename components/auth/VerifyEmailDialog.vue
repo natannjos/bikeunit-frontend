@@ -13,7 +13,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn class="orange--text darken-1" flat="flat" round>@click.native="closeCallback">OK</v-btn>
+        <v-btn class="orange--text darken-1" flat="flat" round @click.native="closeCallback">OK</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

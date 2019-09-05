@@ -1,20 +1,21 @@
 import { base_urls } from "../env";
 export const state = () => ({
-  all: []
+  perfil: {}
 });
 export const mutations = {
-  GET_ALL(state, pedals) {
-    state.all = pedals;
+  GET(state, perfil) {
+    state.perfil = perfil;
   }
 };
 
 export const actions = {
-  async getAll({ commit }) {
+  async get({ commit, rootState }) {
+    let userId = rootState.auth.user.id;
     await this.$axios
-      .get(`${base_urls.API_URL}/pedais/`)
+      .get(`${base_urls.API_URL}/perfis/${userId}/`)
       .then(res => {
         if (res.status == 200) {
-          commit("GET_ALL", res.data.results);
+          commit("GET", res.data);
         }
       })
       .catch(err => {
@@ -24,7 +25,7 @@ export const actions = {
 };
 
 export const getters = {
-  allPedais: state => {
-    return state.all;
+  pedaisMarcados: state => {
+    return state.perfil.pedais;
   }
 };

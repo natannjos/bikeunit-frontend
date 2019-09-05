@@ -4,7 +4,7 @@
       <v-btn v-on="on" icon class="pt-2">
         <v-badge color="orange white--text" overlap left>
           <template v-slot:badge>
-            <span color>{{ pedais.length }}</span>
+            <span color>{{pedais.length}}</span>
           </template>
           <v-icon color="grey" medium>directions_bike</v-icon>
         </v-badge>
@@ -29,17 +29,9 @@ export default {
   },
   computed: {
     pedais() {
-      let pedaisAgendados = this.$store.state.pedais.all;
-      let grupos = this.$store.state.grupos.all;
-      pedaisAgendados.forEach(pedal => {
-        let grupo = grupos.find(x => x.id == pedal.grupoId);
-        pedal.grupo = grupo.nome;
-        pedal.logo = grupo.logo;
-        pedal.divider = true;
-        pedal.inset = true;
-      });
-
-      return pedaisAgendados;
+      var marcados = this.$store.getters["perfil/pedaisMarcados"];
+      if (marcados) return marcados;
+      return [];
     }
   }
 };

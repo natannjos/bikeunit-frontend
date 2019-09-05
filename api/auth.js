@@ -1,3 +1,4 @@
+import { base_urls } from "../env";
 export const checkExist = params => ({
   method: "get",
   url: "auth/check/",
@@ -6,7 +7,7 @@ export const checkExist = params => ({
 
 export const registration = data => ({
   method: "post",
-  url: "auth/registration/",
+  url: `${base_urls.API_URL}/auth/registration/`,
   data
 });
 

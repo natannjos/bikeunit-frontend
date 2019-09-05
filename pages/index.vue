@@ -17,6 +17,12 @@ export default {
   components: {
     Hero,
     ListaPedais
+  },
+  created() {
+    this.$store.dispatch("pedais/getAll");
+    if (this.$store.state.auth.loggedIn) {
+      this.$store.dispatch("perfil/get");
+    }
   }
 };
 </script>
