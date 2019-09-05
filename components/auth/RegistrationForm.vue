@@ -166,6 +166,9 @@ export default {
     }
   },
   methods: {
+    resetData() {
+      Object.assign(this.$data, this.$options.data());
+    },
     async submit() {
       const userData = {
         username: this.username,
@@ -178,14 +181,10 @@ export default {
         password: this.password
       };
       try {
-        await this.$axios(api.registration(userData));
-        this.$emit("success", email);
-        await this.$auth.loginWith("local", {
-          data: fields
-        });
-        this.$router.push({
-          path: "/"
-        });
+        await this.$store.dispatch("auth/registration", { fields: userData });
+        await this.$emit("success", this.email);
+        this.$router.push({ name: "index" });
+        this.resetData();
       } catch (error) {
         const backendErrors = getProperty(error, "response.data");
         if (backendErrors) this.showBackendErrors(backendErrors);

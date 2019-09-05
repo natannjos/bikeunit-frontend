@@ -2,7 +2,7 @@
   <v-container grid-list-md text-xs-center>
     <v-layout align-center justify-center>
       <v-flex xs12 sm10 md8 lg6 xl6>
-        <registration-form :redirect="{ name: 'auth-info' }" @success="successReg" />
+        <registration-form :redirect="{ name: 'index' }" @success="successReg" />
         <br />
         <p>
           Você já está registrado?
@@ -32,6 +32,7 @@ export default {
   }),
   methods: {
     successReg(email) {
+      console.log(email);
       this.email = email;
       this.dialog = true;
     }

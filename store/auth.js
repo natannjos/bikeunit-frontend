@@ -5,19 +5,19 @@ import { auth as api } from "~/api"; // eslint-disable-line
 export const getters = {};
 
 export const actions = {
-  async registration({ dispatch }, { fields, authAfter }) {
-    console.log("Rodou");
-    const { data } = await this.$axios(api.registration(fields));
-
-    if (authAfter) {
-      const token = data.token || data.id_token || data.key; // key in django default
-
-      // Update new token
-      await dispatch("updateToken", token);
-
-      // Fetch authenticated user
-      await dispatch("fetch");
-    }
+  async registration({}, { fields }) {
+    await this.$axios(api.registration(fields)).then(res => {
+      var fields = JSON.parse(res.config.data);
+      this.$auth
+        .loginWith("local", {
+          data: {
+            email: fields.email,
+            password: fields.password1
+          }
+        })
+        .then(() => {})
+        .catch(err => console.log(err));
+    });
   },
 
   async editUser({ commit }, { fields } = {}) {

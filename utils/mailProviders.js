@@ -42,6 +42,7 @@ const mailProviderObjects = mailProviders.reduce((final, cur, index) => {
 }, []);
 
 export default email => {
+  console.log(email);
   const [, host] = email.split("@");
   const provider = mailProviderObjects.find(prov => prov.host.includes(host));
   return provider;

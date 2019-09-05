@@ -39,7 +39,7 @@
 import LoginForm from "~/components/auth/LoginForm.vue";
 export default {
   name: "auth-login",
-  auth: false,
+  auth: "guest",
   components: { LoginForm }
 };
 </script>
