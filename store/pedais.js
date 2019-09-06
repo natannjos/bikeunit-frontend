@@ -24,7 +24,19 @@ export const actions = {
 };
 
 export const getters = {
-  allPedais: state => {
-    return state.all;
+  pedaisParaParticipar: (state, getters, rootState, rootGetters) => {
+    var pedaisMarcados = [];
+    if (Array.isArray(rootGetters["perfil/pedaisMarcados"])) {
+      pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
+      var diferentes = [];
+      state.all.forEach(pedalListaCompleta => {
+        pedaisMarcados.forEach(meuPedal => {
+          if (pedalListaCompleta.id != meuPedal.id) {
+            diferentes.push(pedalListaCompleta);
+          }
+        });
+      });
+    }
+    return diferentes;
   }
 };

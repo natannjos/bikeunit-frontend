@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     pedais() {
-      return this.$store.getters["pedais/allPedais"];
+      return this.$store.getters["pedais/pedaisNãoParticipo"];
     }
   }
 };

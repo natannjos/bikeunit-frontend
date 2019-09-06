@@ -18,8 +18,7 @@ export default {
     Hero,
     ListaPedais
   },
-  created() {
-    this.$store.dispatch("pedais/getAll");
+  mounted() {
     if (this.$store.state.auth.loggedIn) {
       this.$store.dispatch("perfil/get");
     }
