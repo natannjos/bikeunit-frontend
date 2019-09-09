@@ -23,20 +23,32 @@ export const actions = {
   }
 };
 
+function removeItem(array, item) {
+  for (var i = array.length - 1; i >= 0; i--)
+    if (array[i].id === item.id) {
+      array.splice(i, 1);
+      break; // remove this line if there could be multiple matching elements
+    }
+}
+
 export const getters = {
   pedaisParaParticipar: (state, getters, rootState, rootGetters) => {
-    var pedaisMarcados = [];
-    if (Array.isArray(rootGetters["perfil/pedaisMarcados"])) {
-      pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
-      var diferentes = [];
-      state.all.forEach(pedalListaCompleta => {
-        pedaisMarcados.forEach(meuPedal => {
-          if (pedalListaCompleta.id != meuPedal.id) {
-            diferentes.push(pedalListaCompleta);
-          }
+    var todosPedais = state.all;
+    var listaPedais = state.all.slice();
+    if (
+      rootState.auth.loggedIn &&
+      Array.isArray(rootGetters["perfil/pedaisMarcados"])
+    ) {
+      var pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
+      todosPedais.forEach((pedal, index) => {
+        pedaisMarcados.forEach(pedalMarcado => {
+          removeItem(listaPedais, pedalMarcado);
         });
       });
+
+      return listaPedais;
     }
-    return diferentes;
+
+    return state.all;
   }
 };

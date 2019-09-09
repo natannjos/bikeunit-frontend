@@ -2,7 +2,7 @@
   <span>
     <v-list two-line>
       <template v-for="item in pedais">
-        <v-list-tile :key="item.nomeGrupo" avatar @click.stop="openDialog(item)">
+        <v-list-tile :key="item.id" avatar @click.stop="openDialog(item)">
           <v-list-tile-avatar>
             <img :src="item.logoGrupo" />
           </v-list-tile-avatar>

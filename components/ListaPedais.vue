@@ -45,7 +45,7 @@ export default {
   components: {
     CardPedal
   },
-  beforeCreate() {
+  mounted() {
     this.$store.dispatch("pedais/getAll");
   },
   computed: {
