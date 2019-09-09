@@ -27,24 +27,20 @@ function removeItem(array, item) {
   for (var i = array.length - 1; i >= 0; i--)
     if (array[i].id === item.id) {
       array.splice(i, 1);
-      break; // remove this line if there could be multiple matching elements
+      break;
     }
 }
 
 export const getters = {
   pedaisParaParticipar: (state, getters, rootState, rootGetters) => {
-    var todosPedais = state.all;
     var listaPedais = state.all.slice();
-    if (
-      rootState.auth.loggedIn &&
-      Array.isArray(rootGetters["perfil/pedaisMarcados"])
-    ) {
+    var pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
+
+    if (rootState.auth.loggedIn && Array.isArray(pedaisMarcados)) {
       var pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
-      todosPedais.forEach((pedal, index) => {
-        pedaisMarcados.forEach(pedalMarcado => {
-          removeItem(listaPedais, pedalMarcado);
-        });
-      });
+      pedaisMarcados.forEach(pedalMarcado =>
+        removeItem(listaPedais, pedalMarcado)
+      );
 
       return listaPedais;
     }
