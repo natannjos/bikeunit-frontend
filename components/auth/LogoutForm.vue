@@ -6,9 +6,9 @@
 export default {
   props: ["redirect"],
   methods: {
-    async logout() {
+    logout() {
       //await this.$store.dispatch("/auth/logout");
-      await this.$auth.logout();
+      this.$auth.logout();
       this.$router.push(this.redirect);
     }
   }

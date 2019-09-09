@@ -45,12 +45,13 @@ export default {
   components: {
     CardPedal
   },
-  mounted() {
+  created() {
     this.$store.dispatch("pedais/getAll");
   },
+
   computed: {
     pedais() {
-      return this.$store.getters["pedais/pedaisParaParticipar"];
+      return this.$store.getters["pedais/listaPedais"];
     }
   }
 };

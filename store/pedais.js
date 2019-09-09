@@ -32,19 +32,15 @@ function removeItem(array, item) {
 }
 
 export const getters = {
-  pedaisParaParticipar: (state, getters, rootState, rootGetters) => {
+  listaPedais: (state, getters, rootState, rootGetters) => {
     var listaPedais = state.all.slice();
     var pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
-
-    if (rootState.auth.loggedIn && Array.isArray(pedaisMarcados)) {
-      var pedaisMarcados = rootGetters["perfil/pedaisMarcados"];
+    if (Array.isArray(pedaisMarcados) && rootState.auth.loggedIn) {
       pedaisMarcados.forEach(pedalMarcado =>
         removeItem(listaPedais, pedalMarcado)
       );
-
-      return listaPedais;
     }
 
-    return state.all;
+    return listaPedais;
   }
 };

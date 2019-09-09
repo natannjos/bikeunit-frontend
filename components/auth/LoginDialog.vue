@@ -32,11 +32,11 @@
               </v-layout>
             </v-flex>
 
-            <v-card-text class="text-xs-center" @click.stop="dialog = false">
+            <v-card-text class="text-xs-center" @click.stop="closeDialog">
               Você não tem uma conta?
               <nuxt-link :to="{ name: 'auth-cadastro' }">Cadastre-se!</nuxt-link>
             </v-card-text>
-            <v-card-text class="text-xs-center" @click.stop="dialog = false">
+            <v-card-text class="text-xs-center" @click.stop="closeDialog">
               Esqueceu a senha?
               <nuxt-link :to="{ name: 'auth-senha-reset' }">Recuperar!</nuxt-link>
             </v-card-text>
@@ -59,6 +59,7 @@ export default {
   methods: {
     closeDialog() {
       this.dialog = false;
+      this.$emit("close");
     }
   }
 };

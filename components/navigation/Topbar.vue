@@ -17,7 +17,7 @@
           <profile-menu />
         </v-layout>
         <v-layout v-else>
-          <login-dialog></login-dialog>
+          <login-dialog v-on:close="getPedais"></login-dialog>
         </v-layout>
       </v-flex>
       <v-spacer></v-spacer>
@@ -38,6 +38,11 @@ export default {
   computed: {
     userIsLogged() {
       return this.$store.state.auth.loggedIn;
+    }
+  },
+  methods: {
+    getPedais() {
+      this.$store.dispatch("pedais/getAll");
     }
   }
 };

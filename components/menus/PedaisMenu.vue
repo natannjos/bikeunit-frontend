@@ -13,10 +13,9 @@
     <v-card>
       <v-toolbar color="#fbb809" dark>
         <v-toolbar-title>Pedais que você confirmou</v-toolbar-title>
-
         <v-spacer></v-spacer>
       </v-toolbar>
-      <pedal-dialog-menu :pedais="pedais" />
+      <pedal-dialog-menu :pedais="pedais" @atualiza="getMarcados()" v-on:close="getMarcados()" />
     </v-card>
   </v-menu>
 </template>
@@ -26,6 +25,14 @@ import PedalDialogMenu from "../dialogs/PedalDialogMenu";
 export default {
   components: {
     PedalDialogMenu
+  },
+  created() {
+    this.getMarcados();
+  },
+  methods: {
+    getMarcados() {
+      this.$store.dispatch("perfil/get");
+    }
   },
   computed: {
     pedais() {

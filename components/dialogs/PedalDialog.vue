@@ -6,7 +6,7 @@
     </v-btn>
 
     <v-dialog v-model="dialog" max-width="510">
-      <card-pedal-detail :pedal="pedal" v-on:close="dialog=false" />
+      <card-pedal-detail :pedal="pedal" v-on:close="close" />
     </v-dialog>
   </v-layout>
 </template>
@@ -22,6 +22,12 @@ export default {
     return {
       dialog: false
     };
+  },
+  methods: {
+    close() {
+      this.dialog = false;
+      this.$emit("close");
+    }
   }
 };
 </script>
