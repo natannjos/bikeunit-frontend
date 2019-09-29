@@ -92,7 +92,7 @@
       <pedal-dialog :pedal="pedal" v-show="pedal.info" participando="false"></pedal-dialog>
 
       <v-layout row justify-center v-show="!pedal.info">
-        <v-btn round class="amber accent-4 mt-5" dark>
+        <v-btn round class="amber accent-4 mt-5" dark @click="entrar">
           Participar&nbsp;&nbsp;&nbsp;
           <v-icon>check</v-icon>
         </v-btn>
@@ -107,6 +107,11 @@ export default {
   components: {
     PedalDialog
   },
-  props: ["pedal"]
+  props: ["pedal"],
+  methods: {
+    entrar() {
+      this.$store.dispatch("pedais/entrarPedal", this.pedal);
+    }
+  }
 };
 </script>

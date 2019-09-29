@@ -20,6 +20,31 @@ export const actions = {
       .catch(err => {
         console.log("ERRO:", err);
       });
+  },
+
+  async sairPedal({ commit, rootState, dispatch }, pedal) {
+    var userId = rootState.auth.user.id;
+    var urlSairPedal = `${base_urls.API_URL}/entra-sai-pedal/${pedal.id}/`;
+    this.$axios.get(urlSairPedal).then(res => {
+      let participantes = res.data.participantes;
+      let novaLista = participantes.filter(x => x != userId);
+      this.$axios.put(urlSairPedal, { participantes: novaLista }).then(res => {
+        dispatch("getAll");
+      });
+    });
+  },
+  async entrarPedal({ commit, rootState, dispatch }, pedal) {
+    var userId = rootState.auth.user.id;
+    var urlEntrarPedal = `${base_urls.API_URL}/entra-sai-pedal/${pedal.id}/`;
+    this.$axios.get(urlEntrarPedal).then(res => {
+      let participantes = res.data.participantes;
+      participantes.push(userId);
+      this.$axios
+        .put(urlEntrarPedal, { participantes: participantes })
+        .then(res => {
+          dispatch("getAll");
+        });
+    });
   }
 };
 

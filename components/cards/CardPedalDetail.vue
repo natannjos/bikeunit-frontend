@@ -131,11 +131,11 @@ export default {
   props: ["pedal", "participando"],
   methods: {
     submit() {
-      console.log("Participando de pedal", this.pedal.destino);
+      this.$store.dispatch("pedais/entrarPedal", this.pedal);
       this.voltar();
     },
     sair() {
-      console.log("Você saiu do pedal", this.pedal.destino);
+      this.$store.dispatch("pedais/sairPedal", this.pedal);
       this.voltar();
     },
     voltar() {

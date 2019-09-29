@@ -23,14 +23,7 @@
         </v-flex>
 
         <!--Lista de Pedais-->
-        <v-flex
-          xs12
-          sm6
-          md3
-          v-for="pedal in pedais"
-          :key="pedal.nome_ou_destino"
-          style="margin-bottom: 20px"
-        >
+        <v-flex xs12 sm6 md3 v-for="pedal in pedais" :key="pedal.id" style="margin-bottom: 20px">
           <!--Card de Pedal-->
           <card-pedal :pedal="pedal"></card-pedal>
         </v-flex>

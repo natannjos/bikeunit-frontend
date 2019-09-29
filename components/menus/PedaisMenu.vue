@@ -15,7 +15,7 @@
         <v-toolbar-title>Pedais que você confirmou</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
-      <pedal-dialog-menu :pedais="pedais" @atualiza="getMarcados()" v-on:close="getMarcados()" />
+      <pedal-dialog-menu :pedais="pedais" v-on:close="getMarcados()" />
     </v-card>
   </v-menu>
 </template>
