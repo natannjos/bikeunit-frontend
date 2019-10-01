@@ -30,6 +30,7 @@ export const actions = {
       let novaLista = participantes.filter(x => x != userId);
       this.$axios.put(urlSairPedal, { participantes: novaLista }).then(res => {
         dispatch("getAll");
+        dispatch("perfil/get", null, { root: true });
       });
     });
   },
@@ -43,6 +44,7 @@ export const actions = {
         .put(urlEntrarPedal, { participantes: participantes })
         .then(res => {
           dispatch("getAll");
+          dispatch("perfil/get", null, { root: true });
         });
     });
   }
