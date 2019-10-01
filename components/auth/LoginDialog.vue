@@ -1,7 +1,8 @@
 <template>
   <v-layout row justify-center>
-    <v-btn round class="yellow darken-4 lighten-2" small dark @click.stop="dialog = true">
-      <v-icon>lock</v-icon>Login
+    <v-btn round class="amber accent-4" dark @click.stop="dialog = true">
+      <v-icon>{{icon}}</v-icon>
+      {{name}}
     </v-btn>
 
     <v-dialog v-model="dialog" max-width="510">
@@ -51,6 +52,10 @@
 import LoginForm from "~/components/auth/LoginForm.vue";
 export default {
   components: { LoginForm },
+  props: {
+    name: { type: String, default: "Login" },
+    icon: { type: String, default: "lock" }
+  },
   data() {
     return {
       dialog: false

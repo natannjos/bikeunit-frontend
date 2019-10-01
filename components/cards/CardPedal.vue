@@ -89,13 +89,16 @@
         </v-list-tile>
       </ul>
 
-      <pedal-dialog :pedal="pedal" v-show="pedal.info" participando="false"></pedal-dialog>
+      <pedal-dialog :pedal="pedal" v-if="pedal.info" participando="false"></pedal-dialog>
 
-      <v-layout row justify-center v-show="!pedal.info">
-        <v-btn round class="amber accent-4 mt-5" dark @click="entrar">
+      <v-layout justify-center v-else>
+        <v-btn round class="amber accent-4" dark @click="entrar" v-if="userIsLogged">
           Participar&nbsp;&nbsp;&nbsp;
           <v-icon>check</v-icon>
         </v-btn>
+        <v-layout row justify-center v-else class="pt-5">
+          <login-dialog name="Participar" icon="check"></login-dialog>
+        </v-layout>
       </v-layout>
     </v-card-text>
   </v-card>
@@ -103,14 +106,21 @@
 
 <script>
 import PedalDialog from "../dialogs/PedalDialog";
+import LoginDialog from "../auth/LoginDialog";
 export default {
   components: {
-    PedalDialog
+    PedalDialog,
+    LoginDialog
   },
   props: ["pedal"],
   methods: {
     entrar() {
       this.$store.dispatch("pedais/entrarPedal", this.pedal);
+    }
+  },
+  computed: {
+    userIsLogged() {
+      return this.$store.state.auth.loggedIn;
     }
   }
 };
