@@ -23,17 +23,12 @@
         </v-flex>
 
         <!--Lista de Pedais-->
-        
-          <v-flex xs12 sm12 md3 v-for="pedal in pedais" :key="pedal.id" style="margin-bottom: 20px">
-            <!--Card de Pedal-->
-            <card-pedal :pedal="pedal" v-if="pedais.length"></card-pedal>
-            <h2 v-else>Não há pedais marcados</h2>
-          </v-flex>
-          
-          
-        </v-layout>
-        
-        </v-layout>
+
+        <v-flex xs12 sm12 md3 v-for="pedal in pedais" :key="pedal.id" style="margin-bottom: 20px">
+          <!--Card de Pedal-->
+          <card-pedal :pedal="pedal" v-if="pedais.length"></card-pedal>
+          <h2 v-else>Não há pedais marcados</h2>
+        </v-flex>
       </v-layout>
     </v-layout>
   </v-container>
