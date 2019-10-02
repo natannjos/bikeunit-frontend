@@ -26,9 +26,12 @@
 
         <v-flex xs12 sm12 md3 v-for="pedal in pedais" :key="pedal.id" style="margin-bottom: 20px">
           <!--Card de Pedal-->
-          <card-pedal :pedal="pedal" v-if="pedais.length"></card-pedal>
-          <h2 v-else>Não há pedais marcados</h2>
+
+          <card-pedal :pedal="pedal"></card-pedal>
         </v-flex>
+        <v-layout v-show="!pedais.length" justify-center align-center>
+          <h2>Não há pedais marcados</h2>
+        </v-layout>
       </v-layout>
     </v-layout>
   </v-container>

@@ -3,19 +3,23 @@
     <template v-slot:activator="{ on }">
       <v-btn v-on="on" icon class="pt-2">
         <v-badge color="orange white--text" overlap left>
-          <template v-slot:badge>
+          <template v-slot:badge v-if="pedais.length">
             <span color>{{pedais.length}}</span>
           </template>
+          <template v-slot:badge v-else></template>
           <v-icon color="grey" medium>directions_bike</v-icon>
         </v-badge>
       </v-btn>
     </template>
     <v-card>
-      <v-toolbar color="#fbb809" dark>
+      <v-toolbar color="#fbb809" dark v-if="pedais.length">
         <v-toolbar-title>Pedais que você confirmou</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
-      <pedal-dialog-menu :pedais="pedais" v-on:close="getMarcados()" />
+      <v-toolbar color="orange darken-3" dark v-else>
+        <v-toolbar-title>Você não marcou nenhum pedal</v-toolbar-title>
+      </v-toolbar>
+      <pedal-dialog-menu v-show="pedais.length" :pedais="pedais" v-on:close="getMarcados()" />
     </v-card>
   </v-menu>
 </template>

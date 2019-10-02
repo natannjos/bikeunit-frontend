@@ -92,7 +92,7 @@
       <pedal-dialog :pedal="pedal" v-if="pedal.info" participando="false"></pedal-dialog>
 
       <v-layout justify-center v-else>
-        <v-btn round class="amber accent-4" dark @click="entrar" v-if="userIsLogged">
+        <v-btn round class="amber accent-4 mt-5" dark @click="entrar" v-if="userIsLogged">
           Participar&nbsp;&nbsp;&nbsp;
           <v-icon>check</v-icon>
         </v-btn>
